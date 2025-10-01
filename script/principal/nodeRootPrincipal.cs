@@ -22,7 +22,7 @@ public partial class nodeRootPrincipal : Node2D
 		this.addArgent(0);
 		this.addStock(0);
 		
-		
+		//creation de la scene amelioration
 		PackedScene ps = GD.Load<PackedScene>("res://scenes/amelioration.tscn");
 		_sceneAmelioration = (Node2D)ps.Instantiate();
 		AddChild(_sceneAmelioration);
