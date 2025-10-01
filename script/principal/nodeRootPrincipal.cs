@@ -9,6 +9,8 @@ public partial class nodeRootPrincipal : Node2D
 	private Label _lblReputation;
 	private Label _lblArgent;
 	private Label _lblStock;
+	
+	public Node2D _sceneAmelioration;
 
 	public override void _Ready()
 	{
@@ -19,6 +21,15 @@ public partial class nodeRootPrincipal : Node2D
 		this.addReputation(0);//cela permet d'ecrir la valeur de reputation dans le label
 		this.addArgent(0);
 		this.addStock(0);
+		
+		
+		PackedScene ps = GD.Load<PackedScene>("res://scenes/amelioration.tscn");
+		_sceneAmelioration = (Node2D)ps.Instantiate();
+		AddChild(_sceneAmelioration);
+		_sceneAmelioration.Hide(); 
+		
+		
+		
 		
 	}
 	public override void _Process(double delta)

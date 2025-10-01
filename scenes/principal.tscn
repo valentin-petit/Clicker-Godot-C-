@@ -24,7 +24,7 @@ theme_type_variation = &"FlatButton"
 script = ExtResource("2_8rao1")
 
 [node name="Machine1" parent="Sprite2DFond" instance=ExtResource("4_0o8gq")]
-position = Vector2(-757.24, -277.268)
+position = Vector2(-555.488, -113.428)
 
 [node name="lblReputation" type="Label" parent="Sprite2DFond"]
 offset_left = -698.0

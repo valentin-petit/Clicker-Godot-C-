@@ -3,8 +3,11 @@ using System;
 
 public partial class btnQuitter : Button
 {
+	private nodeRootPrincipal _nodeRootPrincipal ;
 	public override void _Ready()
 	{
+		_nodeRootPrincipal = GetTree().CurrentScene as nodeRootPrincipal;
+		//prend la root node de amelioration
 		this.Pressed+=FermerBureau;
 	}
 	public override void _Process(double delta)
@@ -13,7 +16,7 @@ public partial class btnQuitter : Button
 	}
 	private void FermerBureau()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/principal.tscn");
+		_nodeRootPrincipal._sceneAmelioration.Hide();
 		
 	}
 }

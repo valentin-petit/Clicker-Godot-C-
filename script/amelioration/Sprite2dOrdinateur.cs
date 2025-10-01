@@ -5,6 +5,7 @@ public partial class Sprite2dOrdinateur : Sprite2D
 {
 	public override void _Ready()
 	{
+		
 		// Taille de la fenêtre de jeu
 		Vector2 screenSize = GetViewport().GetVisibleRect().Size;
 
