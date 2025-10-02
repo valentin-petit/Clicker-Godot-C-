@@ -18,7 +18,9 @@ public partial class btnQuitter : Button
 	private void FermerBureau()
 	{
 		_nodeRootPrincipal._sceneAmelioration.Hide();
-		//j'apelle l'atribut  
-		
+		//j'apelle l'atribut  _sceneAmelioration de nodeRootPrincipal
+		//et on le cache
+		//JE n'ai pas reussit a faire une methode plus propre que 
+		//celle ci		
 	}
 }
