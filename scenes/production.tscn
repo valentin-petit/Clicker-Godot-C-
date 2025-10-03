@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmqgtikr2sg0l"]
+[gd_scene load_steps=4 format=3 uid="uid://cmqgtikr2sg0l"]
 
 [ext_resource type="Script" uid="uid://bqlc2p71i0ef0" path="res://script/production/Area2DMachine.cs" id="1_dbfyw"]
 [ext_resource type="Texture2D" uid="uid://8i46vvdcfklb" path="res://machinemoderne-removebg-preview.png" id="1_y041m"]
+[ext_resource type="Texture2D" uid="uid://bmuxqpl36tmw6" path="res://icon.svg" id="3_6bt5i"]
 
 [node name="Area2DMachine" type="Area2D"]
 script = ExtResource("1_dbfyw")
@@ -13,3 +14,15 @@ texture = ExtResource("1_y041m")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(24, 13, 231, 117, 167, 76, 164, -15, 137, -27, 130, -81, 126, -81, 91, -104, 84, -145, 3, -169, -10, -138, -162, -61, -175, 75, -80, 143, -31, 122, 59, 180, 147, 200, 216, 172, 226, 116, 4, -10)
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 257.0
+offset_top = -97.0
+offset_right = 757.0
+offset_bottom = 403.0
+texture_normal = ExtResource("1_y041m")
+texture_pressed = ExtResource("3_6bt5i")

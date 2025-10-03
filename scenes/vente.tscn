@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://kvjiwbytn3in" path="res://script/vente/LabelPrixVente.cs" id="1_kg8v5"]
 [ext_resource type="Script" uid="uid://bveho4a253qbl" path="res://script/vente/ControlVente.cs" id="1_sucs7"]
 [ext_resource type="Script" uid="uid://bbwu5bl38f0pq" path="res://script/vente/ButtonMoinsVente.cs" id="2_rass2"]
-[ext_resource type="Script" uid="uid://diwvwremtv6y3" path="res://scenes/ButtonPlusVente.cs" id="3_o3s3h"]
+[ext_resource type="Script" uid="uid://diwvwremtv6y3" path="res://script/vente/ButtonPlusVente.cs" id="3_o3s3h"]
 
 [node name="ControlVente" type="Control"]
 layout_mode = 3
