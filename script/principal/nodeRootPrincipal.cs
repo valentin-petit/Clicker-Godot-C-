@@ -20,7 +20,7 @@ public partial class nodeRootPrincipal : Node2D
 		_lblArgent = GetNode<Label>("Sprite2DFond/lblArgent");
 		_lblStock = GetNode<Label>("Sprite2DFond/lblStock");
 		
-		this.addReputation(0);//cela permet d'ecrir la valeur de reputation dans le label
+		this.addReputation(50);//cela permet d'ecrir la valeur de reputation dans le label
 		this.addArgent(0);
 		this.addStock(0);
 		

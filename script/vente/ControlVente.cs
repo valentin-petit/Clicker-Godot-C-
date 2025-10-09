@@ -30,12 +30,26 @@ public partial class ControlVente : Control
 	public void OnTmrVenteTimeOut()
 	{
 		int nVenteParSeconde;
-		// plus le prix de vente est grand, moins on vend d'unité par seconde
+		// plus le prix de vente est grand, moins on vend d'unité par seconde 
 		// plus la reputationest mauvaise, moins on vend
-		nVenteParSeconde = (1/_prixVente) * (_root.getReputation()/100);
+		nVenteParSeconde = (5/_prixVente) * (_root.getReputation()/100);
 		
 		//vente
 		_root.addArgent(nVenteParSeconde*_prixVente);
+		_root.addStock(-(nVenteParSeconde));
+		
+		// texte pour test
+	var label = new Label();
+	label.Text = "Une vente!  nVenteParSeconde*_prixVente = " + nVenteParSeconde*_prixVente +
+	"\n(5/_prixVente) * (_root.getReputation()/100) : "+ (5/_prixVente) +" + " +(_root.getReputation()/100);
+	label.Modulate = new Color(1, 1, 1, 1);
+	label.Position = new Vector2(0, 75);
+	AddChild(label);
+
+	var tween = GetTree().CreateTween();
+	tween.TweenProperty(label, "modulate:a", 0.0f, 2.0f);
+	tween.Finished += () => label.QueueFree();
+	
 	}
 	
 
