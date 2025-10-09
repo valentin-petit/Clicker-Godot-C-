@@ -21,8 +21,8 @@ public partial class ButtonMoinsVente : Button
 	{
 		if(_rootVente._prixVente>1)
 		{
-			_rootVente._prixVente-=1;
-			_labelVente.Text="Prix de vente:"+ _rootVente._prixVente+" $";
+			_rootVente._prixVente-=0.1f;
+			_labelVente.Text="Prix de vente:"+ (float)Math.Round(_rootVente._prixVente , 2) +" $";
 		}
 	}
 }

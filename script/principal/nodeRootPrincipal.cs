@@ -3,9 +3,11 @@ using System;
 
 public partial class nodeRootPrincipal : Node2D
 {
-	private int _argent=5000;
+	private float _argent=5000.00f;
 	private int _stock=0;
-	private int _reputation=50;
+	private float _reputation=50;
+	// float:F2 pour garder 2 decimal, valeur = (float)Math.Round(valeur, 2);
+	
 	
 	 Label _lblReputation;
 	private Label _lblArgent;
@@ -39,33 +41,33 @@ public partial class nodeRootPrincipal : Node2D
 		
 	}
 	
-	public void addArgent(int ajout)
+	public void addArgent(float ajout)
 	{
 		
 		this._argent+= ajout;
-		_lblArgent.Text="Argent : "+this._argent;
+		_lblArgent.Text="Argent : "+this._argent.ToString("F2");
 	}
 	public void addStock(int ajout)
 	{
 		this._stock+= ajout;
 		_lblStock.Text="Stock : "+this._stock;
 	}
-	public void addReputation(int ajout)
+	public void addReputation(float ajout)
 	{
 		
 		this._reputation+= ajout;
 		_lblReputation.Text="Reputation : "+this._reputation;
 	}
 	
-	public int getArgent()
+	public float getArgent()
 	{
-		return this._argent;
+		return (float)Math.Round(this._argent,2);
 	}
 	public int getStock()
 	{
 		return this._stock;
 	}
-	public int getReputation()
+	public float getReputation()
 	{
 		return this._reputation;
 	}
