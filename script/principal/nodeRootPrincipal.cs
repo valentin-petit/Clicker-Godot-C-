@@ -6,7 +6,8 @@ public partial class nodeRootPrincipal : Node2D
 	private int _argent=5000;
 	private int _stock=0;
 	private int _reputation=50;
-	private Label _lblReputation;
+	
+	 Label _lblReputation;
 	private Label _lblArgent;
 	private Label _lblStock;
 	
@@ -14,6 +15,7 @@ public partial class nodeRootPrincipal : Node2D
 
 	public override void _Ready()
 	{
+		// instanciation des labels
 		_lblReputation = GetNode<Label>("Sprite2DFond/lblReputation");
 		_lblArgent = GetNode<Label>("Sprite2DFond/lblArgent");
 		_lblStock = GetNode<Label>("Sprite2DFond/lblStock");
