@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cra2ah3qshwtx"]
+[gd_scene load_steps=11 format=3 uid="uid://cra2ah3qshwtx"]
 
 [ext_resource type="Texture2D" uid="uid://ca5u0hcih3q6r" path="res://ChatGPT Image 21 sept. 2025, 15_53_21(modification).png" id="1_aqusj"]
 [ext_resource type="Script" uid="uid://bh51j51vd7ffq" path="res://script/amelioration/Sprite2dOrdinateur.cs" id="2_op2g6"]
 [ext_resource type="Texture2D" uid="uid://cef1162m5bc7w" path="res://pubtest.png" id="3_aidif"]
 [ext_resource type="Script" uid="uid://d0t0ghgl54lra" path="res://script/amelioration/btnQuitter.cs" id="3_op2g6"]
 [ext_resource type="Script" uid="uid://twmhugndkwtf" path="res://scenes/BtnAmelPub.cs" id="4_ws0js"]
+[ext_resource type="Texture2D" uid="uid://0c1glqbibuum" path="res://ajoutmachine.png" id="5_6sogb"]
+[ext_resource type="Script" uid="uid://tykba6n0sfc7" path="res://scenes/btnAjoutMachine.cs" id="6_ec5uo"]
 
 [sub_resource type="FontFile" id="FontFile_aidif"]
 subpixel_positioning = 0
@@ -47,13 +49,28 @@ offset_bottom = 100.0
 grow_horizontal = 2
 text = "Achat Publicité
 Vous obtenez plus de visibilité et les demandes augmentent
-Coût = 1000 $
-Bonus : + de ventes"
+Coût = 1000 $"
 icon = ExtResource("3_aidif")
 alignment = 0
 icon_alignment = 2
 expand_icon = true
 script = ExtResource("4_ws0js")
+
+[node name="btnAjoutMachine" type="Button" parent="Sprite2DOrdinateur/ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+text = "Ajout Machine
+Vous obtenez une nouvelle machine de prod dans votre usine
+Coût = 500 $"
+icon = ExtResource("5_6sogb")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_ec5uo")
 
 [node name="btnQuitter" type="Button" parent="Sprite2DOrdinateur"]
 offset_left = 200.0
