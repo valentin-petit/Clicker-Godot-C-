@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cra2ah3qshwtx"]
+[gd_scene load_steps=12 format=3 uid="uid://cra2ah3qshwtx"]
 
 [ext_resource type="Texture2D" uid="uid://ca5u0hcih3q6r" path="res://ChatGPT Image 21 sept. 2025, 15_53_21(modification).png" id="1_aqusj"]
 [ext_resource type="Script" uid="uid://bh51j51vd7ffq" path="res://script/amelioration/Sprite2dOrdinateur.cs" id="2_op2g6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://twmhugndkwtf" path="res://scenes/BtnAmelPub.cs" id="4_ws0js"]
 [ext_resource type="Texture2D" uid="uid://0c1glqbibuum" path="res://ajoutmachine.png" id="5_6sogb"]
 [ext_resource type="Script" uid="uid://tykba6n0sfc7" path="res://scenes/btnAjoutMachine.cs" id="6_ec5uo"]
+[ext_resource type="Script" uid="uid://crhme55xrwug" path="res://scenes/lblArgent.cs" id="8_whdau"]
 
 [sub_resource type="FontFile" id="FontFile_aidif"]
 subpixel_positioning = 0
@@ -81,3 +82,11 @@ theme = SubResource("Theme_ws0js")
 text = "Quitter X"
 icon = SubResource("CanvasTexture_6sogb")
 script = ExtResource("3_op2g6")
+
+[node name="lblArgent" type="Label" parent="Sprite2DOrdinateur"]
+offset_left = -570.0
+offset_top = -302.0
+offset_right = -530.0
+offset_bottom = -279.0
+text = "ARGENT = "
+script = ExtResource("8_whdau")
