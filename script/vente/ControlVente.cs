@@ -7,6 +7,9 @@ public partial class ControlVente : Control
 	public int _coefficientAmeliorationPrixVente = 1;
 	public int _coefficientAmeliorationReputation = 1;
 	
+	// à voir si il faut pas plutot l'intégrer dans un coeff deja existant mais en attendant de savoir il est la
+	public float _coefficientAmeliorationPub = 1.0f; 
+	
 	private nodeRootPrincipal _root;
 	
 	private Timer _tmrVente;
@@ -33,7 +36,9 @@ public partial class ControlVente : Control
 		// plus le prix de vente est grand, moins on vend d'unité par seconde 
 		// plus la reputationest mauvaise, moins on vend
 		nVenteParSeconde = (5/_prixVente)* 1.3f * _coefficientAmeliorationPrixVente *
-		(_root.getReputation()/100) * _coefficientAmeliorationReputation;
+		(_root.getReputation()/100) * _coefficientAmeliorationReputation * _coefficientAmeliorationPub;
+		// J'ai' (Valentin) ajouté mon coeff de pub au dessus mais faut qu'on en discute ptet;
+		
 		float argentGagner = (float)Math.Round(nVenteParSeconde, 2) * _prixVente;
 		
 		// test si stock suffisant

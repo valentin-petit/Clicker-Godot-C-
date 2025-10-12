@@ -25,6 +25,7 @@ public partial class nodeRootPrincipal : Node2D
 		this.addReputation(50);//cela permet d'ecrir la valeur de reputation dans le label
 		this.addArgent(0);
 		this.addStock(0);
+		this.subArgent(0); // amelio
 		
 		//creation de la scene amelioration
 		PackedScene ps = GD.Load<PackedScene>("res://scenes/amelioration.tscn");
@@ -47,6 +48,14 @@ public partial class nodeRootPrincipal : Node2D
 		this._argent+= ajout;
 		_lblArgent.Text="Argent : "+this._argent.ToString("F2");
 	}
+	
+	//test pour argent perdu en améliorant 
+	public void subArgent(float depense)
+	{
+		this._argent-= depense;
+		_lblArgent.Text="Argent : "+this._argent.ToString("F2");
+	}
+	
 	public void addStock(int ajout)
 	{
 		this._stock+= ajout;
