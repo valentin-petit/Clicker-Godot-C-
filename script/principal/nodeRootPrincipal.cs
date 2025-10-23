@@ -8,12 +8,25 @@ public partial class nodeRootPrincipal : Node2D
 	private float _reputation=50;
 	// float:F2 pour garder 2 decimal, valeur = (float)Math.Round(valeur, 2);
 	
+	private PackedScene _machineScene = GD.Load<PackedScene>("res://scenes/production.tscn");
 	
-	 Label _lblReputation;
+	public HBoxContainer machinesContainer; 
+	
+	public VBoxContainer colonne1;
+	public VBoxContainer colonne2;
+	public VBoxContainer colonne3;
+	
+	public int _machineCountCol1 = 0;
+	public int _machineCountCol2 = 0;
+	public int _machineCountCol3 = 0;
+	
+	private Label _lblReputation;
 	private Label _lblArgent;
 	private Label _lblStock;
 	
 	public Node2D _sceneAmelioration;
+	
+	
 
 	public override void _Ready()
 	{
@@ -33,10 +46,48 @@ public partial class nodeRootPrincipal : Node2D
 		AddChild(_sceneAmelioration);
 		_sceneAmelioration.Hide(); 
 		
+		// instanciation des machines
+		machinesContainer = GetNode<HBoxContainer>("Sprite2DFond/machinesContainer");
 		
-		
+		colonne1 = GetNode<VBoxContainer>("Sprite2DFond/machinesContainer/colonne1");
+		colonne2 = GetNode<VBoxContainer>("Sprite2DFond/machinesContainer/colonne2");
+		colonne3 = GetNode<VBoxContainer>("Sprite2DFond/machinesContainer/colonne3");
+				
+		// Colonne 1
+		_machineCountCol1++;
+		AddNewMachine(colonne1, _machineCountCol1);
+	
+		// Colonne 2
+		_machineCountCol2++;
+		AddNewMachine(colonne2, _machineCountCol2);
+
+		// Colonne 3
+		_machineCountCol3++;
+		AddNewMachine(colonne3, _machineCountCol3);
 		
 	}
+	
+	public void AddNewMachine(VBoxContainer colonne, int machineNumber)
+	{
+		Control machineContainer = (Control)_machineScene.Instantiate();
+	
+		Label machineLabel = machineContainer.GetNode<Label>("lblNumMachine"); 
+
+		if (machineLabel != null)
+		{
+			machineLabel.Text = $"Machine N° {machineNumber}";
+		}
+	
+		Area2D machineArea = machineContainer.GetNode<Area2D>("Area2DMachine"); 
+
+		if (machineArea != null)
+		{
+			machineArea.InputPickable = false;
+		}
+		colonne.AddChild(machineContainer);
+	}
+	
+	
 	public override void _Process(double delta)
 	{
 		

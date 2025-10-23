@@ -5,6 +5,7 @@ public partial class btnAjoutMachine : Button
 {
 	private nodeRootPrincipal _root;
 	
+	// pour faire les équilibrages plus tard
 	private const float COUT_NOUV_MACHINE = 500f;
 	
 	//test d'ajout de la scène prod pour ajouter différente fois la machine
@@ -26,20 +27,36 @@ public partial class btnAjoutMachine : Button
 	}
 	private void nouvMachine()
 	{
-		if(_root.getArgent() >= COUT_NOUV_MACHINE){
-			_root.subArgent(COUT_NOUV_MACHINE);		
+		if(_root.getArgent() >= COUT_NOUV_MACHINE)
+		{
+			_root.subArgent(COUT_NOUV_MACHINE);
 			
-			// instaciation d'une machine de tupe area2 comme dans la scene prod
-			Area2DMachine nouvMachine = (Area2DMachine)_machineScene.Instantiate();	
+			_root._machineCountCol1++;
 			
-			//permet au noeud de ne pas recevoir d'évènement et annule donc l'évènement cliquable même si on l'enlèvera plus tard
-			nouvMachine.InputPickable = false;
+			Control machineContainer = (Control)_machineScene.Instantiate();  
 			
-			// positionnement (temporaire pcq la ca marche pas si j'en mets plus qu'une)
-			nouvMachine.Position = new Vector2(300, 800);	
-			nouvMachine.Scale = new Vector2(1.2f, 1.2f); 	
+			Area2D machineArea = machineContainer.GetNode<Area2D>("Area2DMachine");
 			
-			_root.AddChild(nouvMachine);
+			if (machineArea != null)
+			{
+				machineArea.InputPickable = false;
+			}			
+			
+			if (_root.colonne1 != null)
+			{
+				//_root.colonne1.AddChild(machineContainer);
+				//GD.Print($"Nouvelle machine {_root._machineCountCol1} ajoutée à colonne1 !");				
+				_root.AddNewMachine(_root.colonne1, _root._machineCountCol1);            
+				GD.Print($"Nouvelle machine {_root._machineCountCol1} ajoutée à colonne1 !");
+			}
+			else
+			{
+				GD.PrintErr("Erreur : La référence à 'colonne1' est manquante dans nodeRootPrincipal.");
+			}
+		} 
+		else		
+		{
+			GD.Print("Achat impossible : Argent insuffisant.");
 		}
 		
 	}

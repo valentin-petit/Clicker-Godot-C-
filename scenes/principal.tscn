@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnrpy1j4wndt0"]
+[gd_scene load_steps=6 format=3 uid="uid://dnrpy1j4wndt0"]
 
 [ext_resource type="Script" uid="uid://bu3srwp641tbx" path="res://script/principal/nodeRootPrincipal.cs" id="1_6y2rv"]
 [ext_resource type="Script" uid="uid://drbd05dgow5in" path="res://script/principal/btnBureau.cs" id="2_8rao1"]
 [ext_resource type="Script" uid="uid://dqdq4tt88emqh" path="res://script/principal/Sprite2dFond.cs" id="2_61cxg"]
-[ext_resource type="Texture2D" uid="uid://cwyv7yctgd5sv" path="res://fond.png" id="2_jccv5"]
-[ext_resource type="PackedScene" uid="uid://cmqgtikr2sg0l" path="res://scenes/production.tscn" id="4_0o8gq"]
+[ext_resource type="Texture2D" uid="uid://b7wdho21gsrn3" path="res://fond.png" id="2_jccv5"]
 [ext_resource type="PackedScene" path="res://scenes/vente.tscn" id="6_0pxoi"]
 
 [node name="nodeRootPrincipal" type="Node2D"]
@@ -16,6 +15,30 @@ scale = Vector2(0.74349, 0.634766)
 texture = ExtResource("2_jccv5")
 script = ExtResource("2_61cxg")
 
+[node name="machinesContainer" type="HBoxContainer" parent="Sprite2DFond"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -643.0
+offset_top = -1215.0
+offset_right = -1009.0
+offset_bottom = -575.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="colonne1" type="VBoxContainer" parent="Sprite2DFond/machinesContainer"]
+custom_minimum_size = Vector2(390, 400)
+layout_mode = 2
+
+[node name="colonne2" type="VBoxContainer" parent="Sprite2DFond/machinesContainer"]
+custom_minimum_size = Vector2(390, 400)
+layout_mode = 2
+
+[node name="colonne3" type="VBoxContainer" parent="Sprite2DFond/machinesContainer"]
+custom_minimum_size = Vector2(390, 400)
+layout_mode = 2
+
 [node name="btnBureau" type="Button" parent="Sprite2DFond"]
 offset_left = -203.0
 offset_top = -452.0
@@ -23,9 +46,6 @@ offset_right = -36.0
 offset_bottom = -183.0
 theme_type_variation = &"FlatButton"
 script = ExtResource("2_8rao1")
-
-[node name="Machine1" parent="Sprite2DFond" instance=ExtResource("4_0o8gq")]
-position = Vector2(-520, -75)
 
 [node name="lblReputation" type="Label" parent="Sprite2DFond"]
 offset_left = -698.0
