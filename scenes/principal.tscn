@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnrpy1j4wndt0"]
+[gd_scene load_steps=8 format=3 uid="uid://dnrpy1j4wndt0"]
 
 [ext_resource type="Script" uid="uid://bu3srwp641tbx" path="res://script/principal/nodeRootPrincipal.cs" id="1_6y2rv"]
 [ext_resource type="Script" uid="uid://drbd05dgow5in" path="res://script/principal/btnBureau.cs" id="2_8rao1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cwyv7yctgd5sv" path="res://fond.png" id="2_jccv5"]
 [ext_resource type="PackedScene" uid="uid://cmqgtikr2sg0l" path="res://scenes/production.tscn" id="4_0o8gq"]
 [ext_resource type="PackedScene" uid="uid://vbeml8p0tsjw" path="res://scenes/vente.tscn" id="6_0pxoi"]
+[ext_resource type="Script" uid="uid://c2o213lcqi6nl" path="res://script/principal/BtnPause.cs" id="7_l2a8t"]
 
 [node name="nodeRootPrincipal" type="Node2D"]
 script = ExtResource("1_6y2rv")
@@ -56,3 +57,11 @@ offset_left = 342.977
 offset_top = -452.135
 offset_right = 342.977
 offset_bottom = -452.135
+
+[node name="btnPause" type="Button" parent="Sprite2DFond"]
+offset_left = 8.07002
+offset_top = -450.56
+offset_right = 175.07
+offset_bottom = -181.56
+theme_type_variation = &"FlatButton"
+script = ExtResource("7_l2a8t")

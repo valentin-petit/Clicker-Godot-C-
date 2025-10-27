@@ -28,6 +28,13 @@ public partial class nodeRootPrincipal : Node2D
 		AddChild(_sceneAmelioration);
 		_sceneAmelioration.Hide(); 
 		
+		//creation de l'acceuille
+		PackedScene ac = GD.Load<PackedScene>("res://scenes/acceuille.tscn");
+		Control _sceneAcceuille = (Control)ac.Instantiate();
+		_sceneAcceuille.Size = GetViewport().GetVisibleRect().Size;
+
+		AddChild(_sceneAcceuille);
+		
 		
 		
 		
