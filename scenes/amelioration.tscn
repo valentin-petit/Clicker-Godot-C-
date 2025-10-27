@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cra2ah3qshwtx"]
+[gd_scene load_steps=14 format=3 uid="uid://cra2ah3qshwtx"]
 
-[ext_resource type="Texture2D" uid="uid://ca5u0hcih3q6r" path="res://ChatGPT Image 21 sept. 2025, 15_53_21(modification).png" id="1_aqusj"]
+[ext_resource type="Texture2D" uid="uid://c4sgj3akt3l0k" path="res://ChatGPT Image 21 sept. 2025, 15_53_21(modification).png" id="1_aqusj"]
 [ext_resource type="Script" uid="uid://bh51j51vd7ffq" path="res://script/amelioration/Sprite2dOrdinateur.cs" id="2_op2g6"]
+[ext_resource type="Texture2D" uid="uid://dp5s041m6fgk7" path="res://pubtest.png" id="3_aidif"]
 [ext_resource type="Script" uid="uid://d0t0ghgl54lra" path="res://script/amelioration/btnQuitter.cs" id="3_op2g6"]
+[ext_resource type="Script" uid="uid://twmhugndkwtf" path="res://script/amelioration/BtnAmelPub.cs" id="4_ws0js"]
+[ext_resource type="Texture2D" uid="uid://bkg5bebyptyw2" path="res://ajoutmachine.png" id="5_6sogb"]
+[ext_resource type="Script" uid="uid://e2j61pe8ljmf" path="res://script/amelioration/BtnAjoutMachine1.cs" id="6_cvdci"]
+[ext_resource type="Script" uid="uid://cnn43h8ac87yt" path="res://script/amelioration/BtnAjoutMachine2.cs" id="7_cvdci"]
+[ext_resource type="Script" uid="uid://c5w0faev6ek44" path="res://script/amelioration/BtnAjoutMachine3.cs" id="8_njasf"]
+[ext_resource type="Script" uid="uid://crhme55xrwug" path="res://script/amelioration/lblArgent.cs" id="8_whdau"]
 
 [sub_resource type="FontFile" id="FontFile_aidif"]
 subpixel_positioning = 0
@@ -37,6 +44,73 @@ offset_bottom = 87.0
 custom_minimum_size = Vector2(600, 4000)
 layout_mode = 2
 
+[node name="btnAmelPub" type="Button" parent="Sprite2DOrdinateur/ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+text = "Achat Publicité
+Vous obtenez plus de visibilité et les demandes augmentent
+Coût = 1000 $"
+icon = ExtResource("3_aidif")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("4_ws0js")
+
+[node name="btnAjoutMachine1" type="Button" parent="Sprite2DOrdinateur/ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+text = "Ajout Machine
+Vous obtenez une nouvelle machine de prod dans votre usine
+Coût = 500 $"
+icon = ExtResource("5_6sogb")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_cvdci")
+
+[node name="btnAjoutMachine2" type="Button" parent="Sprite2DOrdinateur/ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -5.0
+offset_top = 200.0
+offset_right = -5.0
+offset_bottom = 300.0
+grow_horizontal = 2
+text = "Ajout Machine
+Vous obtenez une nouvelle machine de prod dans votre usine
+Coût = 500 $"
+icon = ExtResource("5_6sogb")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("7_cvdci")
+
+[node name="btnAjoutMachine3" type="Button" parent="Sprite2DOrdinateur/ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -7.0
+offset_top = 300.0
+offset_right = -7.0
+offset_bottom = 400.0
+grow_horizontal = 2
+text = "Ajout Machine
+Vous obtenez une nouvelle machine de prod dans votre usine
+Coût = 500 $"
+icon = ExtResource("5_6sogb")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("8_njasf")
+
 [node name="btnQuitter" type="Button" parent="Sprite2DOrdinateur"]
 offset_left = 200.0
 offset_top = -314.0
@@ -46,3 +120,11 @@ theme = SubResource("Theme_ws0js")
 text = "Quitter X"
 icon = SubResource("CanvasTexture_6sogb")
 script = ExtResource("3_op2g6")
+
+[node name="lblArgent" type="Label" parent="Sprite2DOrdinateur"]
+offset_left = -570.0
+offset_top = -302.0
+offset_right = -530.0
+offset_bottom = -279.0
+text = "ARGENT = "
+script = ExtResource("8_whdau")

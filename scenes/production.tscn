@@ -1,15 +1,69 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmqgtikr2sg0l"]
 
 [ext_resource type="Script" uid="uid://bqlc2p71i0ef0" path="res://script/production/Area2DMachine.cs" id="1_dbfyw"]
-[ext_resource type="Texture2D" uid="uid://8i46vvdcfklb" path="res://machinemoderne-removebg-preview.png" id="1_y041m"]
+[ext_resource type="Texture2D" uid="uid://w36swdldg078" path="res://machinemoderne-removebg-preview.png" id="1_y041m"]
 
-[node name="Area2DMachine" type="Area2D"]
+[node name="MachineContainer" type="Control"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 422.0
+offset_bottom = 395.0
+
+[node name="Area2DMachine" type="Area2D" parent="."]
+input_pickable = false
 script = ExtResource("1_dbfyw")
 
-[node name="Sprite2DMachine" type="Sprite2D" parent="."]
-position = Vector2(22, 23)
-scale = Vector2(0.838, 0.814)
+[node name="Sprite2DMachine" type="Sprite2D" parent="Area2DMachine"]
+texture_filter = 1
+position = Vector2(203, 185)
+scale = Vector2(0.617, 0.6)
 texture = ExtResource("1_y041m")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(24, 13, 231, 117, 167, 76, 164, -15, 137, -27, 130, -81, 126, -81, 91, -104, 84, -145, 3, -169, -10, -138, -162, -61, -175, 75, -80, 143, -31, 122, 59, 180, 147, 200, 216, 172, 226, 116, 4, -10)
+[node name="lblNumMachine" type="Label" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 1.0
+offset_right = 249.0
+offset_bottom = 24.0
+text = "Machine N° "
+
+[node name="lblStockMachine" type="Label" parent="."]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 137.0
+offset_right = 409.0
+offset_bottom = 160.0
+text = "Stock ="
+
+[node name="lblVitProdMachine" type="Label" parent="."]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 66.0
+offset_right = 447.0
+offset_bottom = 89.0
+text = "Vitesse de prod ="
+
+[node name="lblAccident" type="Label" parent="."]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 171.0
+offset_right = 414.0
+offset_bottom = 194.0
+text = "% Accident ="
+
+[node name="lblAccident2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 205.0
+offset_right = 415.0
+offset_bottom = 228.0
+text = "% Panne ="
+
+[node name="lblStockMaxMachine" type="Label" parent="."]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 100.0
+offset_right = 415.0
+offset_bottom = 123.0
+text = "Stock Max ="

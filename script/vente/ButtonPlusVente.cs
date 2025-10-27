@@ -21,9 +21,9 @@ public partial class ButtonPlusVente : Button
 	private void AugmenterPrix()
 	{
 		
-		_rootVente._prixVente+=1;
+		_rootVente._prixVente+=0.1f;
 		GD.Print(_rootVente._prixVente);
-		_labelVente.Text="Prix de vente:"+ _rootVente._prixVente+" $";
+		_labelVente.Text="Prix de vente:"+ (float)Math.Round(_rootVente._prixVente , 2)+" $";
 		
 	}
 }

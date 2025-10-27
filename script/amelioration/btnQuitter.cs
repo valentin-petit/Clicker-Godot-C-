@@ -4,6 +4,8 @@ using System;
 public partial class btnQuitter : Button
 {
 	private nodeRootPrincipal _nodeRootPrincipal ;
+	
+	
 	public override void _Ready()
 	{
 		
