@@ -35,6 +35,8 @@ public partial class nodeRootPrincipal : Node2D
 	private Label _lblStockChaussette;
 	private Label _lblStockProduitFini;
 	
+	private Button _btnAchatLaine;
+	
 	public Node2D _sceneAmelioration;
 	
 	
@@ -49,6 +51,11 @@ public partial class nodeRootPrincipal : Node2D
 		_lblStockTissue = GetNode<Label>("Sprite2DFond/lblStockTissue");
 		_lblStockChaussette = GetNode<Label>("Sprite2DFond/lblStockChaussette");
 		_lblStockProduitFini = GetNode<Label>("Sprite2DFond/lblStockProduitFini");
+		
+		_btnAchatLaine = GetNode<Button>("Sprite2DFond/btnAchatLaine");
+		_btnAchatLaine.Pressed+=achatLaine;
+		
+		
 		
 		_lblArgent.Text += " " + _argent.ToString("F2");
 		_lblReputation.Text += " " + _reputation;
@@ -133,6 +140,15 @@ public partial class nodeRootPrincipal : Node2D
 	public override void _Process(double delta)
 	{
 		
+	}
+	public void achatLaine()
+	{
+		if(_argent>150)
+		{
+			subArgent(150);
+			addStockLaine(10);
+			
+		}
 	}
 	
 	// ARGENT

@@ -99,3 +99,10 @@ offset_right = 334.0
 offset_bottom = -155.0
 theme_override_font_sizes/font_size = 23
 text = "Stock de chaussette :"
+
+[node name="btnAchatLaine" type="Button" parent="Sprite2DFond"]
+offset_left = -732.0
+offset_top = 41.0
+offset_right = -612.0
+offset_bottom = 96.0
+text = "Acheter Laine 150 €"
