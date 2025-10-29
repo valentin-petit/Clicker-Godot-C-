@@ -8,7 +8,9 @@ public partial class nodeRootPrincipal : Node2D
 	private float _reputation=50;
 	// float:F2 pour garder 2 decimal, valeur = (float)Math.Round(valeur, 2);
 	
-	private PackedScene _machineScene = GD.Load<PackedScene>("res://scenes/production.tscn");
+	private PackedScene _machine1Scene = GD.Load<PackedScene>("res://scenes/machine1.tscn");
+	private PackedScene _machine2Scene = GD.Load<PackedScene>("res://scenes/machine2.tscn");
+	private PackedScene _machine3Scene = GD.Load<PackedScene>("res://scenes/machine3.tscn");
 	
 	public HBoxContainer machinesContainer; 
 	
@@ -78,8 +80,21 @@ public partial class nodeRootPrincipal : Node2D
 	
 	public void AddNewMachine(VBoxContainer colonne, int machineNumber)
 	{
-		Control machineContainer = (Control)_machineScene.Instantiate();
-	
+		
+		Control machineContainer;
+		if (colonne==colonne1)
+		{
+			machineContainer = (Control)_machine1Scene.Instantiate();
+		}
+		else if (colonne==colonne2)
+		{
+			machineContainer = (Control)_machine2Scene.Instantiate();
+		}
+		else
+		{
+			machineContainer = (Control)_machine3Scene.Instantiate();
+		}
+		
 		Label machineLabel = machineContainer.GetNode<Label>("lblNumMachine"); 
 
 		if (machineLabel != null)
@@ -94,6 +109,7 @@ public partial class nodeRootPrincipal : Node2D
 			machineArea.InputPickable = false;
 		}
 		colonne.AddChild(machineContainer);
+		
 	}
 	
 	

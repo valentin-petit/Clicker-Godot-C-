@@ -66,7 +66,7 @@ anchor_right = 1.0
 offset_top = 100.0
 offset_bottom = 200.0
 grow_horizontal = 2
-text = "Ajout Machine
+text = "Ajout Machine 1
 Vous obtenez une nouvelle machine de prod dans votre usine
 Coût = 500 $"
 icon = ExtResource("5_6sogb")
@@ -84,7 +84,7 @@ offset_top = 200.0
 offset_right = -5.0
 offset_bottom = 300.0
 grow_horizontal = 2
-text = "Ajout Machine
+text = "Ajout Machine 2
 Vous obtenez une nouvelle machine de prod dans votre usine
 Coût = 500 $"
 icon = ExtResource("5_6sogb")
@@ -102,7 +102,7 @@ offset_top = 300.0
 offset_right = -7.0
 offset_bottom = 400.0
 grow_horizontal = 2
-text = "Ajout Machine
+text = "Ajout Machine 3
 Vous obtenez une nouvelle machine de prod dans votre usine
 Coût = 500 $"
 icon = ExtResource("5_6sogb")

@@ -9,7 +9,7 @@ public partial class BtnAjoutMachine2 : Button
 	private const float COUT_NOUV_MACHINE = 500f;
 	
 	//test d'ajout de la scène prod pour ajouter différente fois la machine
-	private PackedScene _machineScene = GD.Load<PackedScene>("res://scenes/production.tscn");
+	private PackedScene _machineScene = GD.Load<PackedScene>("res://scenes/machine2.tscn");
 	
 	public override void _Ready()
 	{

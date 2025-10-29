@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmqgtikr2sg0l"]
+[gd_scene load_steps=2 format=3 uid="uid://c0xfdjxkwr26i"]
 
-[ext_resource type="Script" uid="uid://bqlc2p71i0ef0" path="res://script/production/Area2DMachine.cs" id="1_dbfyw"]
-[ext_resource type="Texture2D" uid="uid://w36swdldg078" path="res://machinemoderne-removebg-preview.png" id="1_y041m"]
+[ext_resource type="Texture2D" uid="uid://b700reeoyi872" path="res://machine2.png" id="1_egwrv"]
 
 [node name="MachineContainer" type="Control"]
 custom_minimum_size = Vector2(150, 150)
@@ -12,13 +11,12 @@ offset_bottom = 395.0
 
 [node name="Area2DMachine" type="Area2D" parent="."]
 input_pickable = false
-script = ExtResource("1_dbfyw")
 
 [node name="Sprite2DMachine" type="Sprite2D" parent="Area2DMachine"]
 texture_filter = 1
 position = Vector2(203, 185)
 scale = Vector2(0.617, 0.6)
-texture = ExtResource("1_y041m")
+texture = ExtResource("1_egwrv")
 
 [node name="lblNumMachine" type="Label" parent="."]
 layout_mode = 0
