@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0xfdjxkwr26i"]
+[gd_scene load_steps=3 format=3 uid="uid://c0xfdjxkwr26i"]
 
+[ext_resource type="Script" uid="uid://mdy6qr60dc4v" path="res://script/machine2/Machine2Container.cs" id="1_2oyws"]
 [ext_resource type="Texture2D" uid="uid://b700reeoyi872" path="res://machine2.png" id="1_egwrv"]
 
 [node name="MachineContainer" type="Control"]
@@ -8,6 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 422.0
 offset_bottom = 395.0
+script = ExtResource("1_2oyws")
 
 [node name="Area2DMachine" type="Area2D" parent="."]
 input_pickable = false
@@ -26,21 +28,14 @@ offset_right = 249.0
 offset_bottom = 24.0
 text = "Machine N° "
 
-[node name="lblStockMachine" type="Label" parent="."]
-layout_mode = 0
-offset_left = 315.0
-offset_top = 137.0
-offset_right = 409.0
-offset_bottom = 160.0
-text = "Stock ="
-
 [node name="lblVitProdMachine" type="Label" parent="."]
 layout_mode = 0
-offset_left = 314.0
-offset_top = 66.0
-offset_right = 447.0
-offset_bottom = 89.0
-text = "Vitesse de prod ="
+offset_left = 295.0
+offset_top = 117.0
+offset_right = 428.0
+offset_bottom = 166.0
+text = "Vitesse de 
+production :"
 
 [node name="lblAccident" type="Label" parent="."]
 layout_mode = 0
@@ -58,10 +53,26 @@ offset_right = 415.0
 offset_bottom = 228.0
 text = "% Panne ="
 
-[node name="lblStockMaxMachine" type="Label" parent="."]
+[node name="lblVitesse" type="Label" parent="."]
 layout_mode = 0
-offset_left = 317.0
-offset_top = 100.0
-offset_right = 415.0
-offset_bottom = 123.0
-text = "Stock Max ="
+offset_left = 290.0
+offset_top = 76.0
+offset_right = 382.0
+offset_bottom = 99.0
+text = "Vitesse N° 1"
+
+[node name="btnPlus" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 45.0
+offset_right = 362.0
+offset_bottom = 77.0
+text = "+"
+
+[node name="btnMoins" type="Button" parent="."]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 44.0
+offset_right = 322.0
+offset_bottom = 78.0
+text = "-"

@@ -42,7 +42,7 @@ public partial class ControlVente : Control
 		float argentGagner = (float)Math.Round(nVenteParSeconde, 2) * _prixVente;
 		
 		// test si stock suffisant
-		if ((float) _root.getStock() < nVenteParSeconde)
+		if ((float) _root.getStockProduitFini() < nVenteParSeconde)
 		{
 			// afficher un message
 			return;
@@ -57,7 +57,7 @@ public partial class ControlVente : Control
 		
 		//vente
 		_root.addArgent(argentGagner);
-		_root.addStock((int)-(nVenteParSeconde));
+		_root.addStockProduitFini((int)-(nVenteParSeconde));
 		
 		
 		// message pour joueur pres de argent, informe sur la vente

@@ -4,8 +4,13 @@ using System;
 public partial class nodeRootPrincipal : Node2D
 {
 	private float _argent=5000.00f;
-	private int _stock=0;
+	
 	private float _reputation=50;
+	
+	private int _stockLaine=150;
+	private int _stockTissue=0;
+	private int _stockChaussette=0;//le produit n'est pas fini ilrest l'embalage
+	private int _stockProduitFini=0;
 	// float:F2 pour garder 2 decimal, valeur = (float)Math.Round(valeur, 2);
 	
 	private PackedScene _machine1Scene = GD.Load<PackedScene>("res://scenes/machine1.tscn");
@@ -24,7 +29,11 @@ public partial class nodeRootPrincipal : Node2D
 	
 	private Label _lblReputation;
 	private Label _lblArgent;
-	private Label _lblStock;
+	
+	private Label _lblStockLaine;
+	private Label _lblStockTissue;
+	private Label _lblStockChaussette;
+	private Label _lblStockProduitFini;
 	
 	public Node2D _sceneAmelioration;
 	
@@ -35,12 +44,20 @@ public partial class nodeRootPrincipal : Node2D
 		// instanciation des labels
 		_lblReputation = GetNode<Label>("Sprite2DFond/lblReputation");
 		_lblArgent = GetNode<Label>("Sprite2DFond/lblArgent");
-		_lblStock = GetNode<Label>("Sprite2DFond/lblStock");
 		
-		this.addReputation(50);//cela permet d'ecrir la valeur de reputation dans le label
-		this.addArgent(0);
-		this.addStock(0);
-		this.subArgent(0); // amelio
+		_lblStockLaine = GetNode<Label>("Sprite2DFond/lblStokLaine");
+		_lblStockTissue = GetNode<Label>("Sprite2DFond/lblStockTissue");
+		_lblStockChaussette = GetNode<Label>("Sprite2DFond/lblStockChaussette");
+		_lblStockProduitFini = GetNode<Label>("Sprite2DFond/lblStockProduitFini");
+		
+		_lblArgent.Text += " " + _argent.ToString("F2");
+		_lblReputation.Text += " " + _reputation;
+
+		_lblStockLaine.Text += " " + _stockLaine;
+		_lblStockTissue.Text += " " + _stockTissue;
+		_lblStockChaussette.Text += " " + _stockChaussette;
+		_lblStockProduitFini.Text += " " + _stockProduitFini;
+		
 		
 		//creation de la scene amelioration
 		PackedScene ps = GD.Load<PackedScene>("res://scenes/amelioration.tscn");
@@ -118,42 +135,115 @@ public partial class nodeRootPrincipal : Node2D
 		
 	}
 	
+	// ARGENT
 	public void addArgent(float ajout)
 	{
-		
-		this._argent+= ajout;
-		_lblArgent.Text="Argent : "+this._argent.ToString("F2");
+		_argent += ajout;
+		_lblArgent.Text = "Argent : " + _argent.ToString("F2");
 	}
-	
-	//test pour argent perdu en améliorant 
-	public void subArgent(float depense)
+
+	public void subArgent(float retrait)
 	{
-		this._argent-= depense;
-		_lblArgent.Text="Argent : "+this._argent.ToString("F2");
+		_argent -= retrait;
+		_lblArgent.Text = "Argent : " + _argent.ToString("F2");
 	}
-	
-	public void addStock(int ajout)
-	{
-		this._stock+= ajout;
-		_lblStock.Text="Stock : "+this._stock;
-	}
-	public void addReputation(float ajout)
-	{
-		
-		this._reputation+= ajout;
-		_lblReputation.Text="Reputation : "+this._reputation;
-	}
-	
+
 	public float getArgent()
 	{
-		return (float)Math.Round(this._argent,2);
+		return (float)Math.Round(_argent, 2);
 	}
-	public int getStock()
+
+	// RÉPUTATION
+	public void addReputation(float ajout)
 	{
-		return this._stock;
+		_reputation += ajout;
+		_lblReputation.Text = "Reputation : " + _reputation;
 	}
+
+	public void subReputation(float retrait)
+	{
+		_reputation -= retrait;
+		_lblReputation.Text = "Reputation : " + _reputation;
+	}
+
 	public float getReputation()
 	{
-		return this._reputation;
+		return _reputation;
 	}
+
+	// STOCK PRODUIT FINI
+	public void addStockProduitFini(int ajout)
+	{
+		_stockProduitFini += ajout;
+		_lblStockProduitFini.Text = "Stock de Produit Finit: " + _stockProduitFini;
+	}
+
+	public void subStockProduitFini(int retrait)
+	{
+		_stockProduitFini -= retrait;
+		_lblStockProduitFini.Text = "Stock de Produit Finit: " + _stockProduitFini;
+	}
+
+	public int getStockProduitFini()
+	{
+		return _stockProduitFini;
+	}
+
+	// STOCK LAINE
+	public void addStockLaine(int ajout)
+	{
+		_stockLaine += ajout;
+		_lblStockLaine.Text = "Stock de Laine: " + _stockLaine;
+		
+	}
+
+	public void subStockLaine(int retrait)
+	{
+		_stockLaine -= retrait;
+		_lblStockLaine.Text = "Stock de Laine: " + _stockLaine;
+		
+	}
+
+	public int getStockLaine()
+	{
+		return _stockLaine;
+	}
+
+	// STOCK TISSUE
+	public void addStockTissue(int ajout)
+	{
+		_stockTissue += ajout;
+		_lblStockTissue.Text = "Stock de Tissue: " + _stockTissue;
+	}
+
+	public void subStockTissue(int retrait)
+	{
+		_stockTissue -= retrait;
+		_lblStockTissue.Text = "Stock de Tissue: " + _stockTissue;
+	}
+
+	public int getStockTissue()
+	{
+		return _stockTissue;
+	}
+
+	// STOCK CHAUSSETTE
+	public void addStockChaussette(int ajout)
+	{
+		_stockChaussette += ajout;
+		_lblStockChaussette.Text = "Stock de Chaussette: " + _stockChaussette;
+	}
+
+	public void subStockChaussette(int retrait)
+	{
+		_stockChaussette -= retrait;
+		_lblStockChaussette.Text = "Stock de Chaussette: " + _stockChaussette;
+	}
+
+	public int getStockChaussette()
+	{
+		return _stockChaussette;
+	}
+
+
 }

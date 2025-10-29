@@ -7,11 +7,10 @@
 
 [node name="ControlVente" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -828.0
-offset_bottom = -555.0
+anchor_right = 0.324
+anchor_bottom = 0.144
+offset_right = -49.248
+offset_bottom = -0.312004
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sucs7")
