@@ -32,7 +32,7 @@ text = "Machine N° "
 layout_mode = 0
 offset_left = 309.0
 offset_top = 121.0
-offset_right = 490.0
+offset_right = 424.0
 offset_bottom = 170.0
 text = "Vitesse de 
 Production : "
@@ -45,7 +45,7 @@ offset_right = 414.0
 offset_bottom = 194.0
 text = "% Accident ="
 
-[node name="lblAccident2" type="Label" parent="."]
+[node name="lblPanne" type="Label" parent="."]
 layout_mode = 0
 offset_left = 317.0
 offset_top = 205.0
