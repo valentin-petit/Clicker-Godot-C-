@@ -94,11 +94,11 @@ public partial class nodeRootPrincipal : Node2D
 		AddNewMachine(colonne3, _machineCountCol3);
 		
 		//creation de l'acceuille
-		//PackedScene ac = GD.Load<PackedScene>("res://scenes/acceuille.tscn");
-		//Control _sceneAcceuille = (Control)ac.Instantiate();
-		//_sceneAcceuille.Size = GetViewport().GetVisibleRect().Size;
+		PackedScene ac = GD.Load<PackedScene>("res://scenes/acceuille.tscn");
+		Control _sceneAcceuille = (Control)ac.Instantiate();
+		_sceneAcceuille.Size = GetViewport().GetVisibleRect().Size;
 
-		//AddChild(_sceneAcceuille);
+		AddChild(_sceneAcceuille);
 		
 	}
 	
