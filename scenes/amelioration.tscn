@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://cra2ah3qshwtx"]
+[gd_scene load_steps=16 format=3 uid="uid://cra2ah3qshwtx"]
 
-[ext_resource type="Texture2D" uid="uid://c4sgj3akt3l0k" path="res://ChatGPT Image 21 sept. 2025, 15_53_21(modification).png" id="1_aqusj"]
+[ext_resource type="Texture2D" uid="uid://c27jov5jyxco3" path="res://fond_test.png" id="1_njasf"]
 [ext_resource type="Script" uid="uid://bh51j51vd7ffq" path="res://script/amelioration/Sprite2dOrdinateur.cs" id="2_op2g6"]
 [ext_resource type="Texture2D" uid="uid://dp5s041m6fgk7" path="res://pubtest.png" id="3_aidif"]
 [ext_resource type="Script" uid="uid://d0t0ghgl54lra" path="res://script/amelioration/btnQuitter.cs" id="3_op2g6"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://cnn43h8ac87yt" path="res://script/amelioration/BtnAjoutMachine2.cs" id="7_cvdci"]
 [ext_resource type="Script" uid="uid://c5w0faev6ek44" path="res://script/amelioration/BtnAjoutMachine3.cs" id="8_njasf"]
 [ext_resource type="Script" uid="uid://crhme55xrwug" path="res://script/amelioration/lblArgent.cs" id="8_whdau"]
+[ext_resource type="Script" uid="uid://c12ow3wya4t7k" path="res://script/amelioration/BtnAudit.cs" id="11_iyd1d"]
+[ext_resource type="Texture2D" uid="uid://dbybr0dqiyoex" path="res://teltexte.png" id="12_qykaa"]
 
 [sub_resource type="FontFile" id="FontFile_aidif"]
 subpixel_positioning = 0
@@ -30,28 +32,31 @@ default_font = SubResource("FontFile_aidif")
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2DOrdinateur" type="Sprite2D" parent="."]
-position = Vector2(632, 421)
-texture = ExtResource("1_aqusj")
+position = Vector2(575, 378)
+scale = Vector2(1.12207, 1.09736)
+texture = ExtResource("1_njasf")
 script = ExtResource("2_op2g6")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Sprite2DOrdinateur"]
-offset_left = -303.0
-offset_top = -279.0
-offset_right = 300.0
-offset_bottom = 87.0
+offset_left = -344.0
+offset_top = -166.0
+offset_right = 121.0
+offset_bottom = 90.0
 
 [node name="Control" type="Control" parent="Sprite2DOrdinateur/ScrollContainer"]
-custom_minimum_size = Vector2(600, 4000)
+custom_minimum_size = Vector2(450, 4000)
 layout_mode = 2
 
 [node name="btnAmelPub" type="Button" parent="Sprite2DOrdinateur/ScrollContainer/Control"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_right = 2.0
 offset_bottom = 100.0
 grow_horizontal = 2
 text = "Achat Publicité
-Vous obtenez plus de visibilité et les demandes augmentent
+Vous obtenez plus de visibilité
+ et les demandes augmentent
 Coût = 1000 $"
 icon = ExtResource("3_aidif")
 alignment = 0
@@ -64,10 +69,12 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 100.0
+offset_right = 2.0
 offset_bottom = 200.0
 grow_horizontal = 2
 text = "Ajout Machine 1
-Vous obtenez une nouvelle machine de prod dans votre usine
+Vous obtenez une nouvelle
+ machine de prod dans votre usine
 Coût = 500 $"
 icon = ExtResource("5_6sogb")
 alignment = 0
@@ -79,13 +86,14 @@ script = ExtResource("6_cvdci")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -5.0
+offset_left = -2.0
 offset_top = 200.0
-offset_right = -5.0
+offset_right = 2.0
 offset_bottom = 300.0
 grow_horizontal = 2
 text = "Ajout Machine 2
-Vous obtenez une nouvelle machine de prod dans votre usine
+Vous obtenez une nouvelle 
+machine de prod dans votre usine
 Coût = 500 $"
 icon = ExtResource("5_6sogb")
 alignment = 0
@@ -97,13 +105,12 @@ script = ExtResource("7_cvdci")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -7.0
 offset_top = 300.0
-offset_right = -7.0
 offset_bottom = 400.0
 grow_horizontal = 2
 text = "Ajout Machine 3
-Vous obtenez une nouvelle machine de prod dans votre usine
+Vous obtenez une nouvelle 
+machine de prod dans votre usine
 Coût = 500 $"
 icon = ExtResource("5_6sogb")
 alignment = 0
@@ -112,19 +119,99 @@ expand_icon = true
 script = ExtResource("8_njasf")
 
 [node name="btnQuitter" type="Button" parent="Sprite2DOrdinateur"]
-offset_left = 200.0
-offset_top = -314.0
-offset_right = 303.0
-offset_bottom = -284.0
+offset_left = 18.7154
+offset_top = -205.948
+offset_right = 121.715
+offset_bottom = -175.948
 theme = SubResource("Theme_ws0js")
 text = "Quitter X"
 icon = SubResource("CanvasTexture_6sogb")
 script = ExtResource("3_op2g6")
 
 [node name="lblArgent" type="Label" parent="Sprite2DOrdinateur"]
-offset_left = -570.0
-offset_top = -302.0
-offset_right = -530.0
-offset_bottom = -279.0
+offset_left = -450.061
+offset_top = -323.502
+offset_right = -369.061
+offset_bottom = -289.502
 text = "ARGENT = "
 script = ExtResource("8_whdau")
+
+[node name="btnAudit" type="Button" parent="Sprite2DOrdinateur"]
+offset_left = 266.0
+offset_top = 71.0
+offset_right = 397.0
+offset_bottom = 289.0
+text = "Faire appel
+ à un audit
+ pour 1000 $"
+script = ExtResource("11_iyd1d")
+
+[node name="sprFondAudit" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1120, 523)
+scale = Vector2(3.22461, 2.94552)
+texture = ExtResource("12_qykaa")
+
+[node name="txtTel" type="TextEdit" parent="sprFondAudit"]
+offset_left = 48.6881
+offset_top = -59.7517
+offset_right = 160.688
+offset_bottom = 71.2483
+theme_override_font_sizes/font_size = 13
+text = "Vers quelle voie
+d’amélioration 
+allez-vous 
+orienter votre 
+audit ?"
+
+[node name="btnSecurite" type="Button" parent="sprFondAudit"]
+offset_left = 49.3083
+offset_top = 74.6896
+offset_right = 83.3083
+offset_bottom = 109.69
+text = "S"
+
+[node name="btnQualite" type="Button" parent="sprFondAudit"]
+offset_left = 87.1424
+offset_top = 76.0476
+offset_right = 121.142
+offset_bottom = 111.048
+text = "Q"
+
+[node name="btnFiabilite" type="Button" parent="sprFondAudit"]
+offset_left = 123.736
+offset_top = 75.7081
+offset_right = 157.736
+offset_bottom = 110.708
+text = "F"
+
+[node name="txtDef" type="TextEdit" parent="sprFondAudit"]
+offset_left = -280.0
+offset_top = -125.0
+offset_right = 21.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 11
+text = "Un audit externe est une évaluation réalisée par un 
+intervenant indépendant afin d’identifier les forces 
+d’une organisation et les améliorations possibles. 
+Il apporte un regard objectif sur les pratiques, 
+les processus et les conditions de fonctionnement.
+
+On distingue  trois grands axes d’amélioration :
+
+• La Sécurité : prévenir les risques, protéger 
+les personnes et garantir un environnement 
+de travail conforme et sûr.
+• La Qualité : améliorer la constance des produits ou
+services, réduire les défauts et renforcer la satisfaction
+ des utilisateurs.
+• La Fiabilité : optimiser la stabilité des opérations,
+limiter les pannes ou interruptions et assurer une
+ performance durable."
+
+[node name="txtTitre" type="TextEdit" parent="sprFondAudit"]
+offset_left = -252.124
+offset_top = -163.638
+offset_right = 6.8764
+offset_bottom = -127.638
+text = "Qu'est ce qu'un audit (externe) ?"

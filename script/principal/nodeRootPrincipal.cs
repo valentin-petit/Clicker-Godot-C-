@@ -38,7 +38,7 @@ public partial class nodeRootPrincipal : Node2D
 	private Button _btnAchatLaine;
 	
 	public Node2D _sceneAmelioration;
-	
+	public Node2D _sceneAudit;
 	
 
 	public override void _Ready()
@@ -72,7 +72,11 @@ public partial class nodeRootPrincipal : Node2D
 		AddChild(_sceneAmelioration);
 		_sceneAmelioration.Hide(); 
 		
-
+		// creation de la scene audit
+		PackedScene psAudit = GD.Load<PackedScene>("res://scenes/audit.tscn");
+		_sceneAudit = (Node2D)psAudit.Instantiate();
+		AddChild(_sceneAudit);
+		_sceneAudit.Hide();
 
 		// instanciation des machines
 		machinesContainer = GetNode<HBoxContainer>("Sprite2DFond/machinesContainer");
@@ -94,11 +98,11 @@ public partial class nodeRootPrincipal : Node2D
 		AddNewMachine(colonne3, _machineCountCol3);
 		
 		//creation de l'acceuille
-		//PackedScene ac = GD.Load<PackedScene>("res://scenes/acceuille.tscn");
-		//Control _sceneAcceuille = (Control)ac.Instantiate();
-		//_sceneAcceuille.Size = GetViewport().GetVisibleRect().Size;
+		PackedScene ac = GD.Load<PackedScene>("res://scenes/acceuille.tscn");
+		Control _sceneAcceuille = (Control)ac.Instantiate();
+		_sceneAcceuille.Size = GetViewport().GetVisibleRect().Size;
 
-		//AddChild(_sceneAcceuille);
+		AddChild(_sceneAcceuille);
 		
 	}
 	
