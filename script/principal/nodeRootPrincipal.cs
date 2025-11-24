@@ -39,7 +39,7 @@ public partial class nodeRootPrincipal : Node2D
 	
 	public Node2D _sceneAmelioration;
 	
-	
+	public Timer tmrMachine;
 
 	public override void _Ready()
 	{
@@ -100,6 +100,24 @@ public partial class nodeRootPrincipal : Node2D
 
 		AddChild(_sceneAcceuille);
 		
+		//timer machine, liaison a une fonction
+		tmrMachine = GetNode<Timer>("tmrMachine");
+				// Paramétrage du timer
+		tmrMachine.WaitTime = 2.0f;   // Durée en secondes
+		tmrMachine.OneShot = false;    
+		tmrMachine.Autostart = false; // on peut démarrer manuellement
+
+		// Connecter le signal Timeout
+		tmrMachine.Timeout += OnTmrMachineTimeout;
+
+		// Démarrer le timer
+		tmrMachine.Start();
+		
+	}
+	
+	public void OnTmrMachineTimeout()
+	{
+		GD.Print("Ting : timerMachine de scene principale");
 	}
 	
 	public void AddNewMachine(VBoxContainer colonne, int machineNumber)
@@ -136,7 +154,7 @@ public partial class nodeRootPrincipal : Node2D
 		
 	}
 	
-	
+
 	public override void _Process(double delta)
 	{
 		

@@ -6,7 +6,6 @@ public partial class Machine1Container : Control
 	
 	private float _vitesse = 1.0f;
 	private nodeRootPrincipal _root;
-	private double _timer = 0;
 	private Label _lblVitesse;
 	private Label _lblVitProdMachine;
 	private Label _lblAccident;
@@ -14,6 +13,8 @@ public partial class Machine1Container : Control
 	
 	private Button _btnPlus;
 	private Button _btnMoins;
+	
+	private Timer _timer;
 
 	public override void _Ready()
 	{
@@ -34,17 +35,19 @@ public partial class Machine1Container : Control
 		UpdateVitesseProduction();
 		UpdateStats();
 		
+		_timer = _root.GetNode<Timer>("tmrMachine");
+		_timer.Timeout += OnTmrMachineFinished;
+		
 	}
 	public override void _Process(double delta)
 	{
-		_timer += delta;
-
-		if (_timer >= 1.0)
-		{
-			
-			_timer = 0; // Réinitialise le timer
-			AjouterStock(); 
-		}
+		
+	}
+	
+	public void OnTmrMachineFinished()
+	{
+		GD.Print("Execution de OnTmrMachineFinished machine1");
+		AjouterStock();
 	}
 	
 	public void augmenterVitesse()

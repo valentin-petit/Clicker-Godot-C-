@@ -106,3 +106,5 @@ offset_top = 41.0
 offset_right = -612.0
 offset_bottom = 96.0
 text = "Acheter Laine 150 €"
+
+[node name="tmrMachine" type="Timer" parent="."]
