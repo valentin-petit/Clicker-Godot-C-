@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmqgtikr2sg0l"]
 
 [ext_resource type="Script" uid="uid://cds3446bm6ua2" path="res://script/machine1/Machine1Container.cs" id="1_agvtg"]
-[ext_resource type="Texture2D" uid="uid://w36swdldg078" path="res://machinemoderne-removebg-preview.png" id="2_fkogj"]
+[ext_resource type="Texture2D" uid="uid://j5ytlu40q0st" path="res://image/machinemoderne-removebg-preview.png" id="2_agvtg"]
 
 [node name="MachineContainer" type="Control"]
 custom_minimum_size = Vector2(150, 150)
@@ -18,7 +18,7 @@ input_pickable = false
 texture_filter = 1
 position = Vector2(203, 185)
 scale = Vector2(0.617, 0.6)
-texture = ExtResource("2_fkogj")
+texture = ExtResource("2_agvtg")
 
 [node name="lblNumMachine" type="Label" parent="."]
 layout_mode = 0

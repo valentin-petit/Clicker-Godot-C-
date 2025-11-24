@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7fwnhtt2bn6o"
-path="res://.godot/imported/Design_sans_titre_1_-removebg-preview.png-255e3fb697bbc74aa5ee301fae3302e7.ctex"
+uid="uid://j5ytlu40q0st"
+path="res://.godot/imported/machinemoderne-removebg-preview.png-8e1b4da41cb425c88e507cb188b42f35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Design_sans_titre_1_-removebg-preview.png"
-dest_files=["res://.godot/imported/Design_sans_titre_1_-removebg-preview.png-255e3fb697bbc74aa5ee301fae3302e7.ctex"]
+source_file="res://image/machinemoderne-removebg-preview.png"
+dest_files=["res://.godot/imported/machinemoderne-removebg-preview.png-8e1b4da41cb425c88e507cb188b42f35.ctex"]
 
 [params]
 

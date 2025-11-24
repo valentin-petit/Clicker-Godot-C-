@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp5s041m6fgk7"
-path="res://.godot/imported/pubtest.png-f3f45f2860950ceba466a8c46b1f67cd.ctex"
+uid="uid://cnwhju4jpvvm0"
+path="res://.godot/imported/Ligne de production automatisée rétro.png-5bd78a12feaa7fb8928fd154c6d75909.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pubtest.png"
-dest_files=["res://.godot/imported/pubtest.png-f3f45f2860950ceba466a8c46b1f67cd.ctex"]
+source_file="res://image/Ligne de production automatisée rétro.png"
+dest_files=["res://.godot/imported/Ligne de production automatisée rétro.png-5bd78a12feaa7fb8928fd154c6d75909.ctex"]
 
 [params]
 

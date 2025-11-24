@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://btbd8uu2cgymv"]
 
-[ext_resource type="Texture2D" uid="uid://0yr2nrc4amg5" path="res://Ligne de production automatisée rétro.png" id="1_t3bvy"]
-[ext_resource type="Texture2D" uid="uid://bnnvigbb4d868" path="res://Bouton_Commencer_en_Pixel_Art-removebg-preview.png" id="2_asr5s"]
+[ext_resource type="Texture2D" uid="uid://cnwhju4jpvvm0" path="res://image/Ligne de production automatisée rétro.png" id="1_asr5s"]
+[ext_resource type="Texture2D" uid="uid://d22gux5fbswdy" path="res://image/Bouton_Commencer_en_Pixel_Art-removebg-preview.png" id="2_832gm"]
 [ext_resource type="Script" uid="uid://b4yhh0b506cxs" path="res://script/acceuille/TextureButtonAcceuille.cs" id="2_rp8bv"]
-[ext_resource type="Texture2D" uid="uid://c7fwnhtt2bn6o" path="res://Design_sans_titre_1_-removebg-preview.png" id="3_asr5s"]
+[ext_resource type="Texture2D" uid="uid://whfxkqdc82e0" path="res://image/Design_sans_titre_1_-removebg-preview.png" id="3_xb284"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_t3bvy")
+texture = ExtResource("1_asr5s")
 
 [node name="TextureButtonAcceuille" type="TextureButton" parent="TextureRect"]
 layout_mode = 1
@@ -36,6 +36,6 @@ offset_top = -801.0
 offset_right = 306.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("2_asr5s")
-texture_pressed = ExtResource("3_asr5s")
+texture_normal = ExtResource("2_832gm")
+texture_pressed = ExtResource("3_xb284")
 script = ExtResource("2_rp8bv")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkg5bebyptyw2"
-path="res://.godot/imported/ajoutmachine.png-0fdfa583b7a6319d60b3c32ecb0b1af1.ctex"
+uid="uid://ck25r25klfd8y"
+path="res://.godot/imported/machine2.png-6924ab420208cc3c7e8bfa9c6ae4eb3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ajoutmachine.png"
-dest_files=["res://.godot/imported/ajoutmachine.png-0fdfa583b7a6319d60b3c32ecb0b1af1.ctex"]
+source_file="res://image/machine2.png"
+dest_files=["res://.godot/imported/machine2.png-6924ab420208cc3c7e8bfa9c6ae4eb3b.ctex"]
 
 [params]
 
