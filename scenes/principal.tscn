@@ -64,10 +64,10 @@ theme_override_font_sizes/font_size = 23
 text = "Argent:"
 
 [node name="lblStockProduitFini" type="Label" parent="Sprite2DFond"]
-offset_left = 487.0
-offset_top = -274.0
-offset_right = 745.0
-offset_bottom = -237.0
+offset_left = 429.058
+offset_top = -286.72
+offset_right = 687.058
+offset_bottom = -249.72
 theme_override_font_sizes/font_size = 23
 text = "Stock Produit Fini :"
 
