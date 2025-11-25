@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://c27jov5jyxco3" path="res://fond_test.png" id="1_njasf"]
 [ext_resource type="Script" uid="uid://bh51j51vd7ffq" path="res://script/amelioration/Sprite2dOrdinateur.cs" id="2_op2g6"]
-[ext_resource type="Texture2D" uid="uid://dp5s041m6fgk7" path="res://pubtest.png" id="3_aidif"]
+[ext_resource type="Texture2D" uid="uid://0petndoslu7j" path="res://pubtest.png" id="3_aidif"]
 [ext_resource type="Script" uid="uid://d0t0ghgl54lra" path="res://script/amelioration/btnQuitter.cs" id="3_op2g6"]
 [ext_resource type="Script" uid="uid://twmhugndkwtf" path="res://script/amelioration/BtnAmelPub.cs" id="4_ws0js"]
-[ext_resource type="Texture2D" uid="uid://bkg5bebyptyw2" path="res://ajoutmachine.png" id="5_6sogb"]
+[ext_resource type="Texture2D" uid="uid://sj854spx0hdt" path="res://ajoutmachine.png" id="5_6sogb"]
 [ext_resource type="Script" uid="uid://e2j61pe8ljmf" path="res://script/amelioration/BtnAjoutMachine1.cs" id="6_cvdci"]
 [ext_resource type="Script" uid="uid://cnn43h8ac87yt" path="res://script/amelioration/BtnAjoutMachine2.cs" id="7_cvdci"]
 [ext_resource type="Script" uid="uid://c5w0faev6ek44" path="res://script/amelioration/BtnAjoutMachine3.cs" id="8_njasf"]
