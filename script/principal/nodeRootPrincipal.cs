@@ -72,8 +72,8 @@ public partial class nodeRootPrincipal : Node2D
 		AddChild(_sceneAmelioration);
 		_sceneAmelioration.Hide(); 
 		
-		// creation de la scene audit
-		PackedScene psAudit = GD.Load<PackedScene>("res://scenes/audit.tscn");
+		// creation de la scene audit sécurité
+		PackedScene psAudit = GD.Load<PackedScene>("res://scenes/AuditSecurite.tscn");
 		_sceneAudit = (Node2D)psAudit.Instantiate();
 		AddChild(_sceneAudit);
 		_sceneAudit.Hide();

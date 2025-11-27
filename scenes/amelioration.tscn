@@ -1,17 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://cra2ah3qshwtx"]
+[gd_scene load_steps=18 format=3 uid="uid://cra2ah3qshwtx"]
 
 [ext_resource type="Texture2D" uid="uid://c27jov5jyxco3" path="res://fond_test.png" id="1_njasf"]
 [ext_resource type="Script" uid="uid://bh51j51vd7ffq" path="res://script/amelioration/Sprite2dOrdinateur.cs" id="2_op2g6"]
-[ext_resource type="Texture2D" uid="uid://0petndoslu7j" path="res://pubtest.png" id="3_aidif"]
+[ext_resource type="Texture2D" uid="uid://v3shat4m0vom" path="res://pubtest.png" id="3_aidif"]
 [ext_resource type="Script" uid="uid://d0t0ghgl54lra" path="res://script/amelioration/btnQuitter.cs" id="3_op2g6"]
 [ext_resource type="Script" uid="uid://twmhugndkwtf" path="res://script/amelioration/BtnAmelPub.cs" id="4_ws0js"]
-[ext_resource type="Texture2D" uid="uid://sj854spx0hdt" path="res://ajoutmachine.png" id="5_6sogb"]
+[ext_resource type="Texture2D" uid="uid://bry8k4gp0rgoj" path="res://ajoutmachine.png" id="5_6sogb"]
 [ext_resource type="Script" uid="uid://e2j61pe8ljmf" path="res://script/amelioration/BtnAjoutMachine1.cs" id="6_cvdci"]
 [ext_resource type="Script" uid="uid://cnn43h8ac87yt" path="res://script/amelioration/BtnAjoutMachine2.cs" id="7_cvdci"]
 [ext_resource type="Script" uid="uid://c5w0faev6ek44" path="res://script/amelioration/BtnAjoutMachine3.cs" id="8_njasf"]
 [ext_resource type="Script" uid="uid://crhme55xrwug" path="res://script/amelioration/lblArgent.cs" id="8_whdau"]
 [ext_resource type="Script" uid="uid://c12ow3wya4t7k" path="res://script/amelioration/BtnAudit.cs" id="11_iyd1d"]
 [ext_resource type="Texture2D" uid="uid://dbybr0dqiyoex" path="res://teltexte.png" id="12_qykaa"]
+[ext_resource type="Script" uid="uid://c2yl1wvo0egic" path="res://script/amelioration/MenuTel.cs" id="13_hwpd6"]
+[ext_resource type="Script" uid="uid://d01y3yagi41rg" path="res://script/amelioration/AuditSceneFactory.cs" id="13_sfknt"]
 
 [sub_resource type="FontFile" id="FontFile_aidif"]
 subpixel_positioning = 0
@@ -146,13 +148,14 @@ text = "Faire appel
  pour 1000 $"
 script = ExtResource("11_iyd1d")
 
-[node name="sprFondAudit" type="Sprite2D" parent="."]
+[node name="sprMenuTel" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(1120, 523)
 scale = Vector2(3.22461, 2.94552)
 texture = ExtResource("12_qykaa")
+script = ExtResource("13_hwpd6")
 
-[node name="txtTel" type="TextEdit" parent="sprFondAudit"]
+[node name="txtTel" type="TextEdit" parent="sprMenuTel"]
 offset_left = 48.6881
 offset_top = -59.7517
 offset_right = 160.688
@@ -164,28 +167,28 @@ allez-vous
 orienter votre 
 audit ?"
 
-[node name="btnSecurite" type="Button" parent="sprFondAudit"]
+[node name="btnSecurite" type="Button" parent="sprMenuTel"]
 offset_left = 49.3083
 offset_top = 74.6896
 offset_right = 83.3083
 offset_bottom = 109.69
 text = "S"
 
-[node name="btnQualite" type="Button" parent="sprFondAudit"]
+[node name="btnQualite" type="Button" parent="sprMenuTel"]
 offset_left = 87.1424
 offset_top = 76.0476
 offset_right = 121.142
 offset_bottom = 111.048
 text = "Q"
 
-[node name="btnFiabilite" type="Button" parent="sprFondAudit"]
+[node name="btnFiabilite" type="Button" parent="sprMenuTel"]
 offset_left = 123.736
 offset_top = 75.7081
 offset_right = 157.736
 offset_bottom = 110.708
 text = "F"
 
-[node name="txtDef" type="TextEdit" parent="sprFondAudit"]
+[node name="txtDef" type="TextEdit" parent="sprMenuTel"]
 offset_left = -280.0
 offset_top = -125.0
 offset_right = 21.0
@@ -209,9 +212,16 @@ services, réduire les défauts et renforcer la satisfaction
 limiter les pannes ou interruptions et assurer une
  performance durable."
 
-[node name="txtTitre" type="TextEdit" parent="sprFondAudit"]
+[node name="txtTitre" type="TextEdit" parent="sprMenuTel"]
 offset_left = -252.124
 offset_top = -163.638
 offset_right = 6.8764
 offset_bottom = -127.638
 text = "Qu'est ce qu'un audit (externe) ?"
+
+[node name="AuditFactoryNode" type="Node2D" parent="."]
+script = ExtResource("13_sfknt")
+
+[connection signal="pressed" from="sprMenuTel/btnSecurite" to="sprMenuTel" method="OnAuditButtonPressed" binds= ["\"S\""]]
+[connection signal="pressed" from="sprMenuTel/btnQualite" to="sprMenuTel" method="OnAuditButtonPressed" binds= ["\"Q\""]]
+[connection signal="pressed" from="sprMenuTel/btnFiabilite" to="sprMenuTel" method="OnAuditButtonPressed" binds= ["\"F\""]]

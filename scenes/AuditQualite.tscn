@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://ebgg87otujtb"]
+
+[ext_resource type="Script" uid="uid://hl2ftmryrrfu" path="res://script/amelioration/AuditQualite.cs" id="1_b7gju"]
+[ext_resource type="Texture2D" uid="uid://xdm8xbr8uae3" path="res://feuille_audit.png" id="2_bi7b6"]
+
+[node name="AuditQualite" type="Node2D"]
+script = ExtResource("1_b7gju")
+
+[node name="sprQuaF1" type="Sprite2D" parent="."]
+position = Vector2(475, 500)
+scale = Vector2(2, 2)
+texture = ExtResource("2_bi7b6")
+
+[node name="lblTitre" type="Label" parent="sprQuaF1"]
+offset_left = -60.0
+offset_top = -175.0
+offset_right = 72.0
+offset_bottom = -150.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Audit de Qualité"
+
+[node name="lblRapport" type="Label" parent="sprQuaF1"]
+offset_left = -100.0
+offset_top = -145.0
+offset_right = 102.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Version du rapport  : 1.2
+Daet de l'audit : 26/11/2025
+Auditeur : Unité d'Analyse Sécuritaire
+     Objectif de l'audit : Évaluer les protocoles 
+de qualité actuels, identifier les défauts de 
+production potentiels et proposer des 
+optimisations pour améliorer la constance 
+des produits et la satisfaction client."
+
+[node name="lblDiagn" type="Label" parent="sprQuaF1"]
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 111.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="sprQuaF2" type="Sprite2D" parent="."]
+position = Vector2(1425, 500)
+scale = Vector2(2, 2)
+texture = ExtResource("2_bi7b6")
+
+[node name="lblQ" type="Label" parent="sprQuaF2"]
+offset_left = -113.0
+offset_top = -150.0
+offset_right = 118.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10

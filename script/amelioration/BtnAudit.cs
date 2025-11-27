@@ -3,14 +3,11 @@ using System;
 
 public partial class BtnAudit : Button
 {
-	private nodeRootPrincipal _nodeRootPrincipal ;
-	private Node2D _sceneAmelioration ;
-	
+	private nodeRootPrincipal _root;
+		
 	public override void _Ready()
 	{
-		_nodeRootPrincipal = GetTree().CurrentScene as nodeRootPrincipal;
-		_sceneAmelioration = GetOwner<Node2D>();
-		
+		_root = GetTree().CurrentScene as nodeRootPrincipal;
 		this.Pressed+=OuvrirAudit;
 	}
 	public override void _Process(double delta)
@@ -18,24 +15,38 @@ public partial class BtnAudit : Button
 		
 	}
 	private void OuvrirAudit()
-	{
-		GD.Print("Le bouton a bien été cliqué et le signal a été reçu.");
-		
+	{   
+	GD.Print("Le bouton a bien été cliqué et le signal a été reçu.");
 
-		// Si on arrive ici, on essaie l'affichage
-		//_nodeRootPrincipal.GetNode<Sprite2D>("Sprite2DFond").Hide();
-		//_nodeRootPrincipal._sceneAudit.Show();	
-		//_nodeRootPrincipal._sceneAmelioration.Hide();
+		// 1. Récupérer le nœud racine de la scène 'amelioration' :
+		// btnAudit -> Sprite2DOrdinateur -> _sceneAmelioration
+		Node sceneAmelioration = GetParent().GetParent(); 
+
+		// 2. Chercher sprMenuTel. On utilise GetNodeOrNull<Node>() pour la recherche par nom,
+		// puis on caste vers CanvasItem (le type visuel le plus sûr)
 		
-		var sprite = _sceneAmelioration.GetNodeOrNull<Sprite2D>("sprFondAudit");
-		if (sprite != null)
+		Node foundNode = sceneAmelioration.GetNodeOrNull("sprMenuTel");
+		
+		if (foundNode != null)
 		{
-			sprite.Show();			
+			CanvasItem nodeToToggle = foundNode as CanvasItem;
+			
+			if (nodeToToggle != null)
+			{
+				nodeToToggle.Show();
+				GD.Print("Le menu sprMenuTel a été affiché avec succès via CanvasItem.");
+			}
+			else
+			{
+				// Ce cas arrive si sprMenuTel n'est pas un Control/Node2D/Sprite2D (ce qui est faux ici)
+				GD.PrintErr($"ERREUR : sprMenuTel trouvé, mais n'est pas un CanvasItem (Type: {foundNode.GetType().Name}).");
+			}
 		}
 		else
 		{
-			GD.PrintErr("Erreur : sprFondAudit introuvable dans _sceneAmelioration !");
-		}	
-		
+			GD.PrintErr("ERREUR FATALE : Le nœud sprMenuTel est introuvable par le chemin GetParent().GetParent().");
+			// Débogage : Afficher le parent pour voir où nous sommes
+			GD.PrintErr($"Le parent de sprMenuTel devrait être : {sceneAmelioration.Name}");
+		}
 	}
 }
