@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmqgtikr2sg0l"]
 
 [ext_resource type="Script" uid="uid://cds3446bm6ua2" path="res://script/machine1/Machine1Container.cs" id="1_agvtg"]
-[ext_resource type="Texture2D" uid="uid://cjefg8ij8t0g4" path="res://machinemoderne-removebg-preview.png" id="2_fkogj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dhubt"]
+load_path = "res://.godot/imported/Machine1Frame1.png-3d831af6b8bdb291af019e276d549a47.ctex"
 
 [node name="MachineContainer" type="Control"]
 custom_minimum_size = Vector2(150, 150)
@@ -18,7 +20,7 @@ input_pickable = false
 texture_filter = 1
 position = Vector2(203, 185)
 scale = Vector2(0.617, 0.6)
-texture = ExtResource("2_fkogj")
+texture = SubResource("CompressedTexture2D_dhubt")
 
 [node name="lblNumMachine" type="Label" parent="."]
 layout_mode = 0

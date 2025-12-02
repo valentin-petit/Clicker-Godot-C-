@@ -50,8 +50,11 @@ public partial class Machine2Container : Control
 	public void OnTmrMachineFinished()
 	{
 		//GD.Print("Execution de OnTmrMachineFinished machine1");
-		Checkaccident();
-		AjouterStock();
+		if(_estEnPanne!=true)
+		{
+			Checkaccident();
+			AjouterStock();
+		}
 	}
 
 	public void augmenterVitesse()

@@ -16,6 +16,9 @@ public partial class Machine1Container : Control
 	private Button _btnMoins;
 	
 	private Timer _timer;
+	
+	public int _compteur;
+	public Sprite2D _sprite ;
 
 	public override void _Ready()
 	{
@@ -33,6 +36,9 @@ public partial class Machine1Container : Control
 		_btnPlus.Pressed += augmenterVitesse;
 		_btnMoins.Pressed += baisserVitesse;
 		_estEnPanne=false;
+		_compteur = 0;
+		_sprite = GetNode<Sprite2D>("Area2DMachine/Sprite2DMachine");
+
 
 		UpdateVitesseProduction();
 		UpdateStats();
@@ -51,9 +57,21 @@ public partial class Machine1Container : Control
 	public void OnTmrMachineFinished()
 	{
 		//GD.Print("Execution de OnTmrMachineFinished machine1");
-		Checkaccident();
-		AjouterStock();
+		if(_estEnPanne!=true)
+		{
+
+			_compteur++;
+			if (_compteur % 2 == 0) {
+				Checkaccident();
+				AjouterStock();
+				_sprite.Texture = GD.Load<Texture2D>("res://image/machine1frame1.png");
+				}
+			else{
+				_sprite.Texture = GD.Load<Texture2D>("res://image/machine1frame2.png");
+			}
+		}
 	}
+	
 	
 	public void augmenterVitesse()
 	{
@@ -150,8 +168,8 @@ public partial class Machine1Container : Control
 		if (tirage< proba)
 		{
 			_estEnPanne=true;
-			Sprite2D sprite = GetNode<Sprite2D>("Area2DMachine/Sprite2DMachine");
-			sprite.Texture = GD.Load<Texture2D>("res://image/Machine1EnPanne.png");
+			
+			_sprite.Texture = GD.Load<Texture2D>("res://image/Machine1EnPanne.png");
 
 		}
 	}

@@ -221,7 +221,3 @@ text = "Qu'est ce qu'un audit (externe) ?"
 
 [node name="AuditFactoryNode" type="Node2D" parent="."]
 script = ExtResource("13_sfknt")
-
-[connection signal="pressed" from="sprMenuTel/btnSecurite" to="sprMenuTel" method="OnAuditButtonPressed" binds= ["\"S\""]]
-[connection signal="pressed" from="sprMenuTel/btnQualite" to="sprMenuTel" method="OnAuditButtonPressed" binds= ["\"Q\""]]
-[connection signal="pressed" from="sprMenuTel/btnFiabilite" to="sprMenuTel" method="OnAuditButtonPressed" binds= ["\"F\""]]
