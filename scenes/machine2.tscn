@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0xfdjxkwr26i"]
 
 [ext_resource type="Script" uid="uid://mdy6qr60dc4v" path="res://script/machine2/Machine2Container.cs" id="1_2oyws"]
-[ext_resource type="Texture2D" uid="uid://b700reeoyi872" path="res://machine2.png" id="1_egwrv"]
+[ext_resource type="Texture2D" uid="uid://cfrv8c8d3adj8" path="res://machine2.png" id="1_egwrv"]
 
 [node name="MachineContainer" type="Control"]
 custom_minimum_size = Vector2(150, 150)

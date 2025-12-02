@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmmdx4shf12en"
-path="res://.godot/imported/Design_sans_titre_1_-removebg-preview.png-255e3fb697bbc74aa5ee301fae3302e7.ctex"
+uid="uid://phmph1pbyb0m"
+path="res://.godot/imported/amelio_fond1.png-038f97080d8688fa1cb17bcba820a643.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Design_sans_titre_1_-removebg-preview.png"
-dest_files=["res://.godot/imported/Design_sans_titre_1_-removebg-preview.png-255e3fb697bbc74aa5ee301fae3302e7.ctex"]
+source_file="res://amelio_fond1.png"
+dest_files=["res://.godot/imported/amelio_fond1.png-038f97080d8688fa1cb17bcba820a643.ctex"]
 
 [params]
 

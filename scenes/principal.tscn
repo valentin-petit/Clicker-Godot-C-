@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bu3srwp641tbx" path="res://script/principal/nodeRootPrincipal.cs" id="1_6y2rv"]
 [ext_resource type="Script" uid="uid://drbd05dgow5in" path="res://script/principal/btnBureau.cs" id="2_8rao1"]
 [ext_resource type="Script" uid="uid://dqdq4tt88emqh" path="res://script/principal/Sprite2dFond.cs" id="2_61cxg"]
-[ext_resource type="Texture2D" uid="uid://b7wdho21gsrn3" path="res://fond.png" id="2_jccv5"]
+[ext_resource type="Texture2D" uid="uid://c0iqefom6n3b" path="res://fond.png" id="2_jccv5"]
 [ext_resource type="PackedScene" uid="uid://vbeml8p0tsjw" path="res://scenes/vente.tscn" id="6_0pxoi"]
 
 [node name="nodeRootPrincipal" type="Node2D"]
@@ -64,10 +64,10 @@ theme_override_font_sizes/font_size = 23
 text = "Argent:"
 
 [node name="lblStockProduitFini" type="Label" parent="Sprite2DFond"]
-offset_left = 487.0
-offset_top = -274.0
-offset_right = 745.0
-offset_bottom = -237.0
+offset_left = 429.058
+offset_top = -286.72
+offset_right = 687.058
+offset_bottom = -249.72
 theme_override_font_sizes/font_size = 23
 text = "Stock Produit Fini :"
 

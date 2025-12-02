@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmmdx4shf12en"
-path="res://.godot/imported/Design_sans_titre_1_-removebg-preview.png-255e3fb697bbc74aa5ee301fae3302e7.ctex"
+uid="uid://blbr27oi3gbw5"
+path="res://.godot/imported/Machine1EnPanne.png-3a74adc73677f5bd000f1d7ad62182e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Design_sans_titre_1_-removebg-preview.png"
-dest_files=["res://.godot/imported/Design_sans_titre_1_-removebg-preview.png-255e3fb697bbc74aa5ee301fae3302e7.ctex"]
+source_file="res://image/Machine1EnPanne.png"
+dest_files=["res://.godot/imported/Machine1EnPanne.png-3a74adc73677f5bd000f1d7ad62182e6.ctex"]
 
 [params]
 

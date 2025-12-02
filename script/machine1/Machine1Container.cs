@@ -10,6 +10,7 @@ public partial class Machine1Container : Control
 	private Label _lblVitProdMachine;
 	private Label _lblAccident;
 	private Label _lblPanne;
+	private bool _estEnPanne;
 	
 	private Button _btnPlus;
 	private Button _btnMoins;
@@ -31,12 +32,15 @@ public partial class Machine1Container : Control
 		
 		_btnPlus.Pressed += augmenterVitesse;
 		_btnMoins.Pressed += baisserVitesse;
+		_estEnPanne=false;
 
 		UpdateVitesseProduction();
 		UpdateStats();
 		
+		
 		_timer = _root.GetNode<Timer>("tmrMachine");
 		_timer.Timeout += OnTmrMachineFinished;
+		_timer.Timeout += CheckEnPanne;
 		
 	}
 	public override void _Process(double delta)
@@ -46,7 +50,8 @@ public partial class Machine1Container : Control
 	
 	public void OnTmrMachineFinished()
 	{
-		GD.Print("Execution de OnTmrMachineFinished machine1");
+		//GD.Print("Execution de OnTmrMachineFinished machine1");
+		Checkaccident();
 		AjouterStock();
 	}
 	
@@ -91,14 +96,64 @@ public partial class Machine1Container : Control
 
 	public void AjouterStock()
 	{
-		for (int i=0; i<_vitesse;i++)
+		if(_estEnPanne==false)
 		{
-			if(_root.getStockLaine()>=2)
+			for (int i=0; i<_vitesse;i++)
 			{
-				_root.addStockTissue(1);
-				_root.subStockLaine(2);//il faut 2 laine pour 1 tissue
+				if(_root.getStockLaine()>=2)
+				{
+					_root.addStockTissue(1);
+					_root.subStockLaine(2);//il faut 2 laine pour 1 tissue
+				}
 			}
 		}
 		
 	}
+	public void Checkaccident()
+	{
+		Random rng = new Random();
+
+		double proba = (Math.Sqrt(_vitesse) / 100.0)/1.7;
+		double tirage = rng.NextDouble(); // renvoie un double entre 0.0 et 1.0
+
+		if (tirage < proba)
+		{
+			GD.Print("Accident");
+			int tirage2 = rng.Next(100); // nombre entre 0 et 99
+
+			if (tirage2 < 60)                  // 0 à 59 → 60%
+			{
+				GD.Print("il s'est coupé\nvous payer 1000$ de compenssation");
+				_root.subArgent(1000);
+			}
+			else if (tirage2 < 95)             // 60 à 89 → 30%
+			{
+				GD.Print("il a le brat cassé\nvous payer 7000$ de compenssation");
+				_root.subArgent(7000);
+			}
+			else                              // 90 à 99 → 10%
+			{
+				GD.Print("un employer est tomber dans une machine\nil est mort\nvous payer 55000$ de compenssation");
+				_root.subArgent(55000);
+			}
+
+		}
+	}
+	public void CheckEnPanne()
+	{
+		
+		Random rng = new Random();
+
+		double proba = Math.Sqrt(_vitesse) / 17.0;
+		double tirage = rng.NextDouble(); // renvoie un double entre 0.0 et 1.0
+
+		if (tirage< proba)
+		{
+			_estEnPanne=true;
+			Sprite2D sprite = GetNode<Sprite2D>("Area2DMachine/Sprite2DMachine");
+			sprite.Texture = GD.Load<Texture2D>("res://image/Machine1EnPanne.png");
+
+		}
+	}
+	
 }

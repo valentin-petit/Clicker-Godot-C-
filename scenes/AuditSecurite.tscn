@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://chjjcxrt241od"]
+
+[ext_resource type="Script" uid="uid://crrj7mwtnomnv" path="res://script/amelioration/AuditSecurite.cs" id="1_jb2ot"]
+[ext_resource type="Texture2D" uid="uid://xdm8xbr8uae3" path="res://feuille_audit.png" id="2_vrrvg"]
+
+[node name="AuditSecurite" type="Node2D"]
+script = ExtResource("1_jb2ot")
+
+[node name="sprSecuF1" type="Sprite2D" parent="."]
+position = Vector2(475, 500)
+scale = Vector2(2, 2.308)
+texture = ExtResource("2_vrrvg")
+
+[node name="lblTitre" type="Label" parent="sprSecuF1"]
+offset_left = -60.0
+offset_top = -175.0
+offset_right = 72.0
+offset_bottom = -150.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Audit de Sécurité"
+metadata/_edit_use_anchors_ = true
+
+[node name="lblRapport" type="Label" parent="sprSecuF1"]
+offset_left = -100.0
+offset_top = -145.0
+offset_right = 102.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Version du rapport  : 1.2
+Daet de l'audit : 26/11/2025
+Auditeur : Unité d'Analyse Sécuritaire
+      Objectif de l'audit : Évaluer les 
+protocoles de sécurité actuels, identifier 
+les failles potentielles et proposer des 
+optimisations pour améliorer la 
+résilience contre les menaces internes 
+et externes."
+metadata/_edit_use_anchors_ = true
+
+[node name="lblDiagn" type="Label" parent="sprSecuF1"]
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 111.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Diagnostic : RISQUE ÉLEVÉ (4 Pannes 
+Machine non anticipées ce cycle).
+Problème : Le système de supervision est 
+réactif et non prédictif (il attend la panne). 
+L'arrêt d'urgence est trop lent (requiert 
+confirmation manuelle).
+Indicateurs : 4 accidents / cycle ; 
+À Faire : Adopter la Maintenance Prédictive."
+metadata/_edit_use_anchors_ = true
+
+[node name="sprSecuF2" type="Sprite2D" parent="."]
+position = Vector2(1425, 500)
+scale = Vector2(2, 2.299)
+texture = ExtResource("2_vrrvg")
+
+[node name="lblS1" type="Label" parent="sprSecuF2"]
+offset_left = -113.0
+offset_top = -150.0
+offset_right = 118.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "ID                     Description                             	Coût
+P-006 	     Noyau Prédictif \"Oracle\" : 
+Installation de l'IA pour analyse 
+des micro-vibrations et anticipation 
+des pannes (Maintenance Prédictive).
+	Accidents -90%. Requiert une 
+calibration régulière.                         600 Crédits +
+                                                               1 Ingénieur IA
+
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="lblS2" type="Label" parent="sprSecuF2"]
+offset_left = -113.0
+offset_right = 118.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "P-007       Protocole Lock-Out Auto : 
+Automatisation du verrouillage 
+des systèmes critiques en cas de 
+détection d'anomalie grave 
+(supprime le besoin de validation 
+manuelle Niveau 3).	Temps de 
+réaction aux urgences -15s. 
+Risque de faux-positifs (arrêts 
+intempestifs mineurs).	                        200 Crédits"

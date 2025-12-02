@@ -38,8 +38,10 @@ public partial class nodeRootPrincipal : Node2D
 	private Button _btnAchatLaine;
 	
 	public Node2D _sceneAmelioration;
-	
+
 	public Timer tmrMachine;
+	public Node2D _sceneAudit;
+	
 
 	public override void _Ready()
 	{
@@ -72,7 +74,11 @@ public partial class nodeRootPrincipal : Node2D
 		AddChild(_sceneAmelioration);
 		_sceneAmelioration.Hide(); 
 		
-
+		// creation de la scene audit sécurité
+		PackedScene psAudit = GD.Load<PackedScene>("res://scenes/AuditSecurite.tscn");
+		_sceneAudit = (Node2D)psAudit.Instantiate();
+		AddChild(_sceneAudit);
+		_sceneAudit.Hide();
 
 		// instanciation des machines
 		machinesContainer = GetNode<HBoxContainer>("Sprite2DFond/machinesContainer");
