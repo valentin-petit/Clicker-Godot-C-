@@ -5,45 +5,80 @@ using System.Collections.Generic;
 public partial class AuditSecurite : Node2D
 {
 	private const string ID_THEME = "S"; 
+	private Label lblObjectif;
+	private Label lblBut;
+	private Label lblStatutActuel;
+	private Label lblAction;
+	private Label lblCout;
+	private Label lblImpact;
+	
+	private nodeRootPrincipal _root;
 	
 	public override void _Ready()
 	{
-		// faire le système d'affichages des certaines phrases
-		Console.WriteLine($"Audit de Sécurité prêt. Clé : {ID_THEME}");
+		_root = GetNode<nodeRootPrincipal>("/root/NodeRootPrincipal");
 		
+		lblObjectif = GetNode<Label>("sprSecuF1/lblObjectif");
+		lblBut = GetNode<Label>("sprSecuF1/lblBut");
+		lblStatutActuel = GetNode<Label>("sprSecuF1/lblStatutActuel");		
+		
+		lblAction = GetNode<Label>("sprSecuF1/lblAction");
+		lblCout = GetNode<Label>("sprSecuF1/lblCout");
+		lblImpact = GetNode<Label>("sprSecuF1/lblImpact");
 		//test des audits random
-		InitializeAuditLabels(ID_THEME);
+		InitializeAuditData(ID_THEME);
 	}
 	
-	private void InitializeAuditLabels(string key)
+	private void InitializeAuditData(string key)
 	{
-		// Construction des noms des Labels : lblS1 et lblS2
-		string lblName1 = $"lbl{key}1";
-		string lblName2 = $"lbl{key}2";
+		// Appelez la NOUVELLE méthode statique de la Fabrique pour obtenir 1 proposition
+		// Nous voulons 1 seule proposition complète à la fois
+		List<AuditProposition> propositions = AuditSceneFactory.GetRandomPropositions(key, 1);
 
-		// Récupération des Labels par leur nom construit
-		Label lbl1 = GetNodeOrNull<Label>(lblName1); 
-		Label lbl2 = GetNodeOrNull<Label>(lblName2);
-
-		// Appel de la méthode statique de la Fabrique pour obtenir 2 phrases
-		List<string> phrases = AuditSceneFactory.GetRandomPhrases(key, 2);
-		
-		if (lbl1 != null && lbl2 != null && phrases.Count >= 2)
+		if (propositions.Count >= 1)
 		{
-			lbl1.Text = phrases[0];
-			lbl2.Text = phrases[1];
-			GD.Print($"Labels {lblName1} et {lblName2} mis à jour pour l'audit {key}.");
+			AuditProposition proposition = propositions[0];
+
+			// 2. Remplir les Labels avec les données de la proposition
+			lblObjectif.Text = proposition.Objectif;
+			lblBut.Text = proposition.But;
+			lblStatutActuel.Text = proposition.StatutActuel;
+			lblAction.Text = proposition.Action;
+			lblCout.Text = proposition.Cout;
+			lblImpact.Text = proposition.Impact;
+			
+			GD.Print($"Proposition d'audit {key} chargée.");
 		}
 		else
 		{
-			if (lbl1 == null || lbl2 == null)
-			{
-				GD.PrintErr($"ERREUR DE LABEL : Les Labels ({lblName1} ou {lblName2}) sont introuvables. Vérifiez le nom et le chemin dans la scène.");
-			}
-			if (phrases.Count < 2)
-			{
-				GD.PrintErr($"ERREUR DE FABRIQUE : Moins de 2 phrases trouvées pour la clé : {key}.");
-			}
+			GD.PrintErr($"ERREUR DE FABRIQUE : Aucune proposition trouvée pour la clé : {key}.");
 		}
 	}
-}
+	
+	private void _on_btn_investir_pressed()
+	{
+		string coutNettoye = lblCout.Text.Replace(" ", ""); 
+
+		if (int.TryParse(coutNettoye, out int coutInt))
+		{
+			float coutFloat = (float)coutInt;
+			
+			GD.Print($"Coût d'investissement : {coutFloat} (en float)");
+
+			if(_root != null && _root.getArgent() >= coutFloat) 
+			{
+				_root.subArgent(coutFloat); 
+				
+				GD.Print("Investissement réussi ! Argent dépensé et impact appliqué.");
+			}        
+			else 
+			{
+				GD.PrintErr("Fonds insuffisants. Impossible de payer cette recommandation.");
+			}
+		}
+		else
+		{
+			GD.PrintErr("Erreur critique : Problème de format de coût. Le coût n'est pas un nombre valide.");
+		}
+	}
+}	

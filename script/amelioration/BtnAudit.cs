@@ -48,5 +48,7 @@ public partial class BtnAudit : Button
 			// Débogage : Afficher le parent pour voir où nous sommes
 			GD.PrintErr($"Le parent de sprMenuTel devrait être : {sceneAmelioration.Name}");
 		}
+		// cout d'achat de l'audit
+		_root.subArgent(1000); 
 	}
 }

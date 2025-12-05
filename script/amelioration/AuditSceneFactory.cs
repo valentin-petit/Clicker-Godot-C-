@@ -5,54 +5,53 @@ using System.Linq;
 
 public partial class AuditSceneFactory : Node2D
 {
-	// Association des ID_THEME avec les différentes scènes pour afficher la bonne scène avec une même méthode (Factory)
-	private readonly Dictionary<string, string> AuditScenePaths = new Dictionary<string, string>()
-	{
-		{"S", "res://scenes/AuditSecurite.tscn"},
-		{"Q", "res://scenes/AuditQualite.tscn"},
-		{"F", "res://scenes/AuditFiabilite.tscn"}
-	};
-
+	
 	// Dico avec toutes les variantes de phrases pour les différentes fiches d'audit
-	private readonly Dictionary<string, List<string>> ThemePhrases = new Dictionary<string, List<string>>()
+	private static readonly Dictionary<string, List<AuditProposition>> ThemePropositions = new Dictionary<string, List<AuditProposition>>()
 	{
-		{"S", new List<string> {"Sécurité 1", "Sécurité 2", "Sécurité 3", "Sécurité 4", "Sécurité 5", "Sécurité 6", "Sécurité 7", "Sécurité 8", "Sécurité 9", "Sécurité 10"}},
-		{"Q", new List<string> {"Qualité 1", "Qualité 2", "Qualité 3", "Qualité 4", "Qualité 5", "Qualité 6", "Qualité 7", "Qualité 8", "Qualité 9", "Qualité 10"}},
-		{"F", new List<string> {"Fiabilité 1", "Fiabilité 2", "Fiabilité 3", "Fiabilité 4", "Fiabilité 5", "Fiabilité 6", "Fiabilité 7", "Fiabilité 8", "Fiabilité 9", "Fiabilité 10"}}
+		{"S", new List<AuditProposition> // Propositions de Sécurité
+			{
+				// Exemple de votre proposition complète :
+				new AuditProposition(
+					objectif: "Vérifier la conformité des protecteurs (carters, barrières, verrouillages) et tester la fonctionnalité des interrupteurs de sécurité.",
+					but: "Évaluer le respect des règles de sécurité et garantir l'intégrité de la production.",
+					statutActuel: "Non-conforme : 3 interrupteurs de sécurité sont facilement contournables.",
+					action: "Remplacement des 3 interrupteurs de sécurité par des modèles RFID.",
+					cout: "500",
+					impact: "Réduction du Risque : Le taux d'accident annuel prévisionnel passe de 20% à 7%."
+				),
+				// Ajoutez d'autres propositions "S" ici...
+			
+				new AuditProposition(
+					objectif: "remplir",
+					but: "remplir",
+					statutActuel: "remplir",
+					action: "remplir",
+					cout: "remplir",
+					impact: "remplir"
+				)
+				
+			}
+		},
+		{"Q", new List<AuditProposition> { /* ... Vos propositions de Qualité ... */ } },
+		{"F", new List<AuditProposition> { /* ... Vos propositions de Fiabilité ... */ } }
 	};
-
-	// Méthode pour return la scène de l'id (Factory Method)
-	public string GetScenePath(string auditTypeKey)
-	{
-		if (AuditScenePaths.ContainsKey(auditTypeKey))
-		{
-			return AuditScenePaths[auditTypeKey];
-		}
-		Console.Error.WriteLine($"Clé d'audit non reconnue : {auditTypeKey}");
-		return null;
-	}
+							
 
 	// Méthode pour obtenir 2 phrases aléatoires
 	
-	public static List<string> GetRandomPhrases(string auditTypeKey, int count)
+	public static List<AuditProposition> GetRandomPropositions(string auditTypeKey, int count)
 	{
-		/*
-		if (ThemePhrases.ContainsKey(auditTypeKey))
+		if (ThemePropositions.ContainsKey(auditTypeKey))
 		{
-			var phrases = ThemePhrases[auditTypeKey];
-			var rng = new RandomNumberGenerator();
-			rng.Randomize();
-
-			var selected = phrases.OrderBy(x => rng.Randf()) 
-								   .Take(count)               
-								   .ToList();                 
-	
+			var propositions = ThemePropositions[auditTypeKey];
+			var random = new Random(); // System.Random
+			
+			var selected = propositions.OrderBy(x => random.NextDouble())
+									   .Take(count)
+									   .ToList();		
 			return selected;
 		}
-		// Retourne une liste vide si la clé n'existe pas
-		*/
-		return new List<string>();
-		}
-		
-		
+		return new List<AuditProposition>();
+	}
 }

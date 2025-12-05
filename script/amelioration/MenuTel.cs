@@ -9,6 +9,8 @@ public partial class MenuTel : Sprite2D
 	private Button _btnQualite; 
 	private Button _btnFiabilite;
 	
+	[Export] public SceneController MainController;
+		
 	public override void _Ready()
 	{
 		_factory = GetNodeOrNull<AuditSceneFactory>("../AuditFactoryNode");
@@ -29,27 +31,23 @@ public partial class MenuTel : Sprite2D
 		_btnFiabilite = GetNode<Button>("btnFiabilite");
 		
 		//chaque boutons est caractérisé par un ID et c'est ID est mis en paramètre de la méthode commune OnAuditButtonPressed
-		_btnSecurite.Pressed += () => OnAuditButtonPressed("S");
-		_btnQualite.Pressed += () => OnAuditButtonPressed("Q");
-		_btnFiabilite.Pressed += () => OnAuditButtonPressed("F");
-	}
-
-	public void OnAuditButtonPressed(string auditKey)
-	{			
-		// si la scene existe, on s'y deplace (en prenant le paramètre du genre "S" --> AuditSecurite
-		if (_factory != null)
-		{
-			string scenePath = _factory.GetScenePath(auditKey);
-			
-			if (scenePath != null)
-			{
-				// Enleve la scene actuelle
-				GetTree().ChangeSceneToFile(scenePath); 
+		_btnSecurite.Pressed += () => { 
+			if (MainController != null) {
+				MainController.SelectAuditPanel("S"); 
 			}
-			else
-			{
-				Console.Error.WriteLine($"Erreur : Chemin de scène non trouvé pour la clé : {auditKey}");
+		};
+		
+		_btnQualite.Pressed += () => { 
+			if (MainController != null) {
+				MainController.SelectAuditPanel("Q"); 
 			}
-		}
+		};
+		
+		_btnFiabilite.Pressed += () => { 
+			if (MainController != null) {
+				MainController.SelectAuditPanel("F"); 
+			}
+		};
 	}
-}
+	
+}	

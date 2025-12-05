@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cra2ah3qshwtx"]
+[gd_scene load_steps=22 format=3 uid="uid://cra2ah3qshwtx"]
 
 [ext_resource type="Texture2D" uid="uid://c27jov5jyxco3" path="res://fond_test.png" id="1_njasf"]
+[ext_resource type="Script" uid="uid://beuwdgxvc87b" path="res://scenes/SceneController.cs" id="1_stp56"]
 [ext_resource type="Script" uid="uid://bh51j51vd7ffq" path="res://script/amelioration/Sprite2dOrdinateur.cs" id="2_op2g6"]
 [ext_resource type="Texture2D" uid="uid://v3shat4m0vom" path="res://pubtest.png" id="3_aidif"]
 [ext_resource type="Script" uid="uid://d0t0ghgl54lra" path="res://script/amelioration/btnQuitter.cs" id="3_op2g6"]
@@ -14,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dbybr0dqiyoex" path="res://teltexte.png" id="12_qykaa"]
 [ext_resource type="Script" uid="uid://c2yl1wvo0egic" path="res://script/amelioration/MenuTel.cs" id="13_hwpd6"]
 [ext_resource type="Script" uid="uid://d01y3yagi41rg" path="res://script/amelioration/AuditSceneFactory.cs" id="13_sfknt"]
+[ext_resource type="PackedScene" uid="uid://chjjcxrt241od" path="res://scenes/AuditSecurite.tscn" id="15_1knl6"]
+[ext_resource type="PackedScene" uid="uid://ebgg87otujtb" path="res://scenes/AuditQualite.tscn" id="16_e1itk"]
+[ext_resource type="PackedScene" uid="uid://4r5nsxpylkxm" path="res://scenes/AuditFiabilite.tscn" id="17_stp56"]
 
 [sub_resource type="FontFile" id="FontFile_aidif"]
 subpixel_positioning = 0
@@ -32,6 +36,7 @@ default_font = SubResource("FontFile_aidif")
 [sub_resource type="CanvasTexture" id="CanvasTexture_6sogb"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_stp56")
 
 [node name="Sprite2DOrdinateur" type="Sprite2D" parent="."]
 position = Vector2(575, 378)
@@ -148,12 +153,13 @@ text = "Faire appel
  pour 1000 $"
 script = ExtResource("11_iyd1d")
 
-[node name="sprMenuTel" type="Sprite2D" parent="."]
+[node name="sprMenuTel" type="Sprite2D" parent="." node_paths=PackedStringArray("MainController")]
 visible = false
-position = Vector2(1120, 523)
-scale = Vector2(3.22461, 2.94552)
+position = Vector2(682, 536)
+scale = Vector2(2.26186, 2.36043)
 texture = ExtResource("12_qykaa")
 script = ExtResource("13_hwpd6")
+MainController = NodePath("..")
 
 [node name="txtTel" type="TextEdit" parent="sprMenuTel"]
 offset_left = 48.6881
@@ -221,3 +227,15 @@ text = "Qu'est ce qu'un audit (externe) ?"
 
 [node name="AuditFactoryNode" type="Node2D" parent="."]
 script = ExtResource("13_sfknt")
+
+[node name="AuditSecurite" parent="." instance=ExtResource("15_1knl6")]
+visible = false
+position = Vector2(1000, 0)
+
+[node name="AuditQualite" parent="." instance=ExtResource("16_e1itk")]
+visible = false
+position = Vector2(1000, 0)
+
+[node name="AuditFiabilite" parent="." instance=ExtResource("17_stp56")]
+visible = false
+position = Vector2(1000, 0)

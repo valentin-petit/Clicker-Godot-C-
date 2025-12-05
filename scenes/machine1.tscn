@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cds3446bm6ua2" path="res://script/machine1/Machine1Container.cs" id="1_agvtg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dhubt"]
-load_path = "res://.godot/imported/Machine1Frame1.png-3d831af6b8bdb291af019e276d549a47.ctex"
 
 [node name="MachineContainer" type="Control"]
 custom_minimum_size = Vector2(150, 150)

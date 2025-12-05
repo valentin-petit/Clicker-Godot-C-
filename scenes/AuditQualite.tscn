@@ -15,43 +15,80 @@ texture = ExtResource("2_bi7b6")
 offset_left = -60.0
 offset_top = -175.0
 offset_right = 72.0
-offset_bottom = -150.0
+offset_bottom = -152.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Audit de Qualité"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="lblRapport" type="Label" parent="sprQuaF1"]
+[node name="lblObjectif" type="Label" parent="sprQuaF1"]
 offset_left = -100.0
-offset_top = -145.0
-offset_right = 102.0
-offset_bottom = 22.0
+offset_top = -130.0
+offset_right = 100.0
+offset_bottom = -55.0
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Version du rapport  : 1.2
-Daet de l'audit : 26/11/2025
-Auditeur : Unité d'Analyse Sécuritaire
-     Objectif de l'audit : Évaluer les protocoles 
-de qualité actuels, identifier les défauts de 
-production potentiels et proposer des 
-optimisations pour améliorer la constance 
-des produits et la satisfaction client."
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="lblDiagn" type="Label" parent="sprQuaF1"]
+[node name="lblBut" type="Label" parent="sprQuaF1"]
 offset_left = -100.0
-offset_top = 20.0
-offset_right = 111.0
-offset_bottom = 170.0
+offset_top = -50.0
+offset_right = 100.0
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="sprQuaF2" type="Sprite2D" parent="."]
-position = Vector2(1425, 500)
-scale = Vector2(2, 2)
-texture = ExtResource("2_bi7b6")
-
-[node name="lblQ" type="Label" parent="sprQuaF2"]
-offset_left = -113.0
-offset_top = -150.0
-offset_right = 118.0
-offset_bottom = 153.0
+[node name="lblStatutActuel" type="Label" parent="sprQuaF1"]
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 50.0
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="lblAction" type="Label" parent="sprQuaF1"]
+offset_left = -100.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="lblCout" type="Label" parent="sprQuaF1"]
+offset_left = -100.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 150.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="lblImpact" type="Label" parent="sprQuaF1"]
+offset_left = -100.0
+offset_top = 125.0
+offset_right = 100.0
+offset_bottom = 175.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="btnInvestir" type="Button" parent="sprQuaF1"]
+offset_left = 50.0
+offset_top = 90.0
+offset_right = 117.0
+offset_bottom = 121.0
+text = "Investir"
+metadata/_edit_use_anchors_ = true
