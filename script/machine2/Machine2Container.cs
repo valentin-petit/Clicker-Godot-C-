@@ -71,6 +71,7 @@ public partial class Machine2Container : Control
 		// 1. Si panne, on ne fait rien
 		if (_estEnPanne) return;
 
+
 		// 2. Si pas assez de stock
 		if (_root.getStockTissue() < 2)
 		{
