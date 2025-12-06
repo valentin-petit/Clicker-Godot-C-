@@ -109,7 +109,7 @@ public partial class nodeRootPrincipal : Node2D
 		//timer machine, liaison a une fonction
 		tmrMachine = GetNode<Timer>("tmrMachine");
 				// Paramétrage du timer
-		tmrMachine.WaitTime = 2.0f;   // Durée en secondes
+		tmrMachine.WaitTime = 0.34f;   // Durée en secondes
 		tmrMachine.OneShot = false;    
 		tmrMachine.Autostart = false; // on peut démarrer manuellement
 
@@ -123,7 +123,7 @@ public partial class nodeRootPrincipal : Node2D
 	
 	public void OnTmrMachineTimeout()
 	{
-		GD.Print("Ting : timerMachine de scene principale");
+		//GD.Print("Ting : timerMachine de scene principale");
 	}
 	
 	public void AddNewMachine(VBoxContainer colonne, int machineNumber)

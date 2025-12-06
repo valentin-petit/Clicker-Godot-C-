@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmqgtikr2sg0l"]
 
 [ext_resource type="Script" uid="uid://cds3446bm6ua2" path="res://script/machine1/Machine1Container.cs" id="1_agvtg"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dhubt"]
+[ext_resource type="Texture2D" uid="uid://m7k4kfsank0v" path="res://image/machine1frame0.png" id="2_agvtg"]
 
 [node name="MachineContainer" type="Control"]
 custom_minimum_size = Vector2(150, 150)
@@ -19,7 +18,7 @@ input_pickable = false
 texture_filter = 1
 position = Vector2(203, 185)
 scale = Vector2(0.617, 0.6)
-texture = SubResource("CompressedTexture2D_dhubt")
+texture = ExtResource("2_agvtg")
 
 [node name="lblNumMachine" type="Label" parent="."]
 layout_mode = 0
