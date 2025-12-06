@@ -25,10 +25,32 @@ public partial class BtnAjoutMachine2 : Button
 	{
 		
 	}
+	
+	private void ShowPopupNbMax()
+	{
+		var dialog = new AcceptDialog
+		{
+			Title = "Attention",
+			DialogText = "Nb max atteint"
+		};
+
+		// Ajout à la scène
+		GetTree().CurrentScene.AddChild(dialog);
+
+		// Affiche centré
+		dialog.PopupCentered();
+	}
+
 	private void nouvMachine()
 	{
 		if(_root.getArgent() >= COUT_NOUV_MACHINE)
 		{
+			if (_root._machineCountCol2 >= 3)
+			{
+				ShowPopupNbMax();
+				GD.Print("Ajout impossible : vous avez déjà 3 machines de type 2 !");
+				return;
+			}
 			_root.subArgent(COUT_NOUV_MACHINE);
 			
 			_root._machineCountCol2++;
