@@ -18,7 +18,7 @@ public partial class AuditSceneFactory : Node2D
 					statutActuel: "Non-conforme : 3 interrupteurs de sécurité sont facilement contournables.",
 					action: "Remplacement des 3 interrupteurs de sécurité par des modèles RFID.",
 					cout: "500",
-					impact: "Réduction du Risque : Le taux d'accident annuel prévisionnel passe de 20% à 7%."
+					impact: "ex :taux d'accidentpasse de 20% à 7%."
 				),
 				// Ajoutez d'autres propositions "S" ici...
 			
