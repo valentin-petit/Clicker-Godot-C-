@@ -4,21 +4,24 @@ using System.Collections.Generic;
 
 public partial class SceneController : Node2D
 {
+	// utilisation de CanvasItem qui est parent à Node2D car on peut pas faire de Node2D.Visible directement (pour afficher les différents audits)
 	private readonly Dictionary<string, CanvasItem> AuditPanels = new Dictionary<string, CanvasItem>();
 	
 	public override void _Ready()
 	{
+		// Associe l'ID à son "Node2D" d'audit
 		AuditPanels.Add("S", GetNode<CanvasItem>("AuditSecurite")); 
 		AuditPanels.Add("Q", GetNode<CanvasItem>("AuditQualite"));
 		AuditPanels.Add("F", GetNode<CanvasItem>("AuditFiabilite"));
 		
+		// rend invisible chaque panel (par sécu)
 		foreach (var panel in AuditPanels.Values)
 		{
 			panel.Visible = false;
 		}
 	}
 	
-	// Méthode pour return la scène de l'id (Factory Method)
+	// méthode qui affiche le panel correspondant à l'ID choisis soit le bouton cliqué sur le menutel
 	public CanvasItem GetSceneNode(string auditTypeKey)
 	{
 		if (AuditPanels.ContainsKey(auditTypeKey))
@@ -29,6 +32,7 @@ public partial class SceneController : Node2D
 		return null;
 	}
 	
+	//fait comme avant mais non pas au lancement de l'audit mais plutot lorsqu'il change de catégorie (voir si bloqué qu'une catégorie par achat d'audit)
 	public void SelectAuditPanel(string auditKey)
 	{
 		foreach (var panel in AuditPanels.Values)

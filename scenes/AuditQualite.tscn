@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ebgg87otujtb"]
+[gd_scene load_steps=6 format=3 uid="uid://ebgg87otujtb"]
 
 [ext_resource type="Script" uid="uid://hl2ftmryrrfu" path="res://script/audit/AuditQualite.cs" id="1_b7gju"]
 [ext_resource type="Texture2D" uid="uid://xdm8xbr8uae3" path="res://feuille_audit.png" id="2_bi7b6"]
+[ext_resource type="Texture2D" uid="uid://5mmakc3kpdto" path="res://signature.jpg" id="3_3yw56"]
+[ext_resource type="Texture2D" uid="uid://dpe0kvr5ccgsc" path="res://signature_signe.png" id="4_761de"]
+[ext_resource type="Script" uid="uid://3vbtxc2fe63b" path="res://scenes/TxtbtnSignatureQuitter.cs" id="5_dwmqt"]
 
 [node name="AuditQualite" type="Node2D"]
 script = ExtResource("1_b7gju")
@@ -74,21 +77,20 @@ theme_override_font_sizes/font_size = 10
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="lblImpact" type="Label" parent="sprQuaF1"]
-offset_left = -100.0
-offset_top = 125.0
-offset_right = 100.0
-offset_bottom = 175.0
-size_flags_vertical = 1
+[node name="chkInvestir" type="CheckButton" parent="sprQuaF1"]
+offset_left = 25.0
+offset_top = 99.0
+offset_right = 132.0
+offset_bottom = 130.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="btnInvestir" type="Button" parent="sprQuaF1"]
-offset_left = 50.0
-offset_top = 90.0
-offset_right = 117.0
-offset_bottom = 121.0
 text = "Investir"
-metadata/_edit_use_anchors_ = true
+
+[node name="txtbtnSignatureQuitter" type="TextureButton" parent="sprQuaF1"]
+offset_top = 120.0
+offset_right = 120.0
+offset_bottom = 165.0
+texture_normal = ExtResource("3_3yw56")
+texture_pressed = ExtResource("4_761de")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_dwmqt")

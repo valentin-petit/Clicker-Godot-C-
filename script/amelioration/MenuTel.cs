@@ -9,7 +9,7 @@ public partial class MenuTel : Sprite2D
 	private Button _btnQualite; 
 	private Button _btnFiabilite;
 	
-	[Export] public SceneController MainController;
+	[Export] public SceneController MainController; // permet de définir dans l'inspecteur de sprMenuTel le controller associé
 		
 	public override void _Ready()
 	{
@@ -30,7 +30,7 @@ public partial class MenuTel : Sprite2D
 		_btnQualite = GetNode<Button>("btnQualite");
 		_btnFiabilite = GetNode<Button>("btnFiabilite");
 		
-		//chaque boutons est caractérisé par un ID et c'est ID est mis en paramètre de la méthode commune OnAuditButtonPressed
+		//chaque boutons est caractérisé par un ID ("S", "F", "Q") et cet ID est mis en paramètre de la méthode commune OnAuditButtonPressed
 		_btnSecurite.Pressed += () => { 
 			if (MainController != null) {
 				MainController.SelectAuditPanel("S"); 

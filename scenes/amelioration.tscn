@@ -153,12 +153,13 @@ text = "Faire appel
  pour 1000 $"
 script = ExtResource("11_iyd1d")
 
-[node name="sprMenuTel" type="Sprite2D" parent="."]
+[node name="sprMenuTel" type="Sprite2D" parent="." node_paths=PackedStringArray("MainController")]
 visible = false
 position = Vector2(682, 536)
 scale = Vector2(2.26186, 2.36043)
 texture = ExtResource("12_qykaa")
 script = ExtResource("13_hwpd6")
+MainController = NodePath("..")
 
 [node name="txtTel" type="TextEdit" parent="sprMenuTel"]
 offset_left = 48.6881

@@ -49,6 +49,13 @@ public partial class BtnAudit : Button
 			GD.PrintErr($"Le parent de sprMenuTel devrait être : {sceneAmelioration.Name}");
 		}
 		// cout d'achat de l'audit
-		_root.subArgent(1000); 
+		
+		if(_root.getArgent() >= 1000)
+		{
+			_root.subArgent(1000); 
+		}else 
+		{
+			GD.PrintErr("ERREUR : Vous ne possédez pas assez d'argent pour acheter un audit.");
+		}
 	}
 }
