@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 // structure pour faire les différents audits
-	public class AuditProposition
+	public partial class AuditProposition : Godot.GodotObject
 	{
 		//variables qui mettent en lien les éléments de la scène et les strings du dico
 		public string Objectif { get; set; }

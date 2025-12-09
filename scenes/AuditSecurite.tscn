@@ -94,3 +94,5 @@ texture_pressed = ExtResource("4_53cwy")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("5_gbjt7")
+
+[connection signal="toggled" from="sprSecuF1/chkInvestir" to="." method="OnChkInvestirToggled"]

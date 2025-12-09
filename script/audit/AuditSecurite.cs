@@ -4,6 +4,13 @@ using System.Collections.Generic;
 
 public partial class AuditSecurite : Node2D
 {
+	//chk
+	[Signal]
+	public delegate void InvestmentToggledEventHandler(bool isChecked, AuditProposition proposition, string auditKey);
+	private AuditProposition _currentProposition;
+	private CheckBox _chkInvestir;
+	
+	
 	private const string ID_THEME = "S"; 
 	private Label lblObjectif;
 	private Label lblBut;
@@ -26,7 +33,11 @@ public partial class AuditSecurite : Node2D
 		lblCout = GetNode<Label>("sprSecuF1/lblCout");
 		
 
-		InitializeAuditData(ID_THEME);
+		//InitializeAuditData(ID_THEME);
+		
+		//chk
+		_chkInvestir = GetNode<CheckBox>("sprSecuF1/chkInvestir");      
+		_chkInvestir.Toggled += OnChkInvestirToggled;
 		
 	}
 	
@@ -38,13 +49,16 @@ public partial class AuditSecurite : Node2D
 		if (propositions.Count >= 1)
 		{
 			AuditProposition proposition = propositions[0];
-
+			_currentProposition = proposition; // chk
+			
 			// remplissage des labels par la propal
 			lblObjectif.Text = proposition.Objectif;
 			lblBut.Text = proposition.But;
 			lblStatutActuel.Text = proposition.StatutActuel;
 			lblAction.Text = proposition.Action;
 			lblCout.Text = proposition.Cout;
+			
+			_chkInvestir.ButtonPressed = false; // chk
 			
 			GD.Print($"audit {key} chargé.");
 		}
@@ -53,6 +67,13 @@ public partial class AuditSecurite : Node2D
 			GD.PrintErr($"ERREUR : Aucune proposition trouvée pour {key}.");
 		}
 	}			
+	
+	//chk
+	private void OnChkInvestirToggled(bool estCoche)
+	{
+		// Émission du signal (pour que le SceneController gère l'investissement/annulation)
+	EmitSignal(SignalName.InvestmentToggled, estCoche, _currentProposition, ID_THEME);	
+	}
 	
 	private void _on_txtbtn_signature_quitter_pressed()
 	{				

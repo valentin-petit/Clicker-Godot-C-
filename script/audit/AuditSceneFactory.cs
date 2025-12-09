@@ -18,7 +18,7 @@ public partial class AuditSceneFactory : Node2D
 					statutActuel: "Non-conforme : 3 interrupteurs de sécurité sont facilement contournables.",
 					action: "Remplacement des 3 interrupteurs de sécurité par des modèles RFID.",
 					cout: "500",
-					impactVariable: "Accident - 10%" // créer une variable de panne dans le root pour pouvoir la récup
+					impactVariable: "-10" // créer une variable de panne dans le root pour pouvoir la récup
 				),
 				
 			
@@ -27,8 +27,8 @@ public partial class AuditSceneFactory : Node2D
 					but: "remplirS2",
 					statutActuel: "S2remplir",
 					action: "remplirS2",
-					cout: "remplirS2",
-					impactVariable: "Accident -5%" 
+					cout: "500",
+					impactVariable: "-5" 
 
 				)
 				
@@ -41,8 +41,8 @@ public partial class AuditSceneFactory : Node2D
 					but: "remplirQ1",
 					statutActuel: "Q1remplir",
 					action: "remplirQ1",
-					cout: "remplirQ1",
-					impactVariable: "Produits defectueux - 10%" 
+					cout: "500",
+					impactVariable: "-10" 
 				),							
 							
 				new AuditProposition(
@@ -50,8 +50,8 @@ public partial class AuditSceneFactory : Node2D
 					but: "remplirQ2",
 					statutActuel: "remplirQ2",
 					action: "remplirQ2",
-					cout: "remplirQ2",
-					impactVariable: "Produits defectueux - 10%" 
+					cout: "500",
+					impactVariable: "-10" 
 				)
 			} 
 		
@@ -63,8 +63,8 @@ public partial class AuditSceneFactory : Node2D
 					but: "remplirF1",
 					statutActuel: "F1remplir",
 					action: "remplirF1",
-					cout: "remplirF1",
-					impactVariable: "Panne - 10%" 
+					cout: "500",
+					impactVariable: "-10" 
 				),
 															
 				new AuditProposition(
@@ -72,8 +72,8 @@ public partial class AuditSceneFactory : Node2D
 					but: "remplirF2",
 					statutActuel: "remplirF2",
 					action: "remplirF2",
-					cout: "remplirF2",
-					impactVariable: "Panne - 5%" 
+					cout: "500",
+					impactVariable: "-5" 
 				)
 			} 
 		}
