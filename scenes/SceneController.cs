@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public partial class SceneController : Node2D
 {
 	// utilisation de CanvasItem qui est parent à Node2D car on peut pas faire de Node2D.Visible directement (pour afficher les différents audits)
-	private readonly Dictionary<string, CanvasItem> AuditPanels = new Dictionary<string, CanvasItem>();
+	private readonly Dictionary<string, CanvasItem> AuditPanels = new Dictionary<string, CanvasItem>(); // gère l'affichage
+
 	
 	public override void _Ready()
 	{

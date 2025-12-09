@@ -18,25 +18,39 @@ public partial class TxtbtnSignatureQuitter : TextureButton
 		
 	}
 	
-	// a finir
 	private void FermerTout()
 	{
-		if (_root == null) return;
 		
-		_root._sceneAmelioration.Hide();
+		GD.Print("Entrée dans la méthode fermertout réussi");
+		if (_root == null)
+		{
+			GD.PrintErr("ERREUR : La racine _root n'a pas été trouvée.");
+			return;
+		}
+
+		//cache le panneau parent audit du bonton cliqué (Audit Sécurité si on affiche celui ci, etc ..)
+		CanvasItem panneauAudit = GetParent().GetParent() as CanvasItem; //GetParent().GetParent() --> txtbtnSignatureQuitter --> sprSecuF1 --> AuditSecurtite
+		if (panneauAudit != null)
+		{
+			panneauAudit.Hide();
+			GD.Print($"{panneauAudit.Name} a été caché avec succès");
+		}
+		else
+		{
+			GD.PrintErr("ERREUR : {panneauAudit.Name} n'a pas pu être converti et caché");
+		}
+
+		//on déclare sprMenuTel en tant qu'enfant de la scène amélio
+		Sprite2D sprMenuTel = _root._sceneAmelioration.GetNodeOrNull<Sprite2D>("sprMenuTel");
 		
-		Sprite2D sprMenuTel = _root.GetNodeOrNull<Sprite2D>("sprMenuTel");
 		if (sprMenuTel != null)
 		{
 			sprMenuTel.Hide();
-		}	
-		
-		SceneController sceneController = _root.GetNodeOrNull<SceneController>("res://scenes/SceneController.cs");
-		if (sceneController != null)
+			GD.Print("sprMenuTel a été caché avec succès");
+		}
+		else
 		{
-			//sceneController.HideAllPanels(); 
-			sceneController.SelectAuditPanel("NONE");
-		}						
-	
+			GD.PrintErr("ERREUR : sprMenuTel introuvable sous la scène _root._sceneAmelioration.");
+		}
 	}
 }

@@ -9,13 +9,15 @@ using System.Collections.Generic;
 		public string StatutActuel { get; set; }
 		public string Action { get; set; }
 		public string Cout { get; set; } 
+		public string ImpactVariable {get; set;}
 
-		public AuditProposition(string objectif, string but, string statutActuel, string action, string cout)
+		public AuditProposition(string objectif, string but, string statutActuel, string action, string cout, string impactVariable)
 		{
 			Objectif = objectif;
 			But = but;
 			StatutActuel = statutActuel;
 			Action = action;
 			Cout = cout;
+			ImpactVariable = impactVariable;
 		}
 	}
