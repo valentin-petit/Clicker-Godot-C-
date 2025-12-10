@@ -30,9 +30,7 @@ public partial class AuditQualite : Node2D
 		lblAction = GetNode<Label>("sprQuaF1/lblAction");
 		lblCout = GetNode<Label>("sprQuaF1/lblCout");
 
-		//InitializeAuditData(ID_THEME);
-		
-				//chk
+		//chk
 		_chkInvestir = GetNode<CheckBox>("sprQuaF1/chkInvestir");      
 		_chkInvestir.Toggled += OnChkInvestirToggled;
 	}
@@ -54,7 +52,7 @@ public partial class AuditQualite : Node2D
 			lblAction.Text = proposition.Action;
 			lblCout.Text = proposition.Cout;
 			
-			_chkInvestir.ButtonPressed = false; // chk
+			_chkInvestir.ButtonPressed = false; // chk			
 			
 			GD.Print($"audit {key} chargé.");
 		}
@@ -67,12 +65,21 @@ public partial class AuditQualite : Node2D
 		//chk
 	private void OnChkInvestirToggled(bool estCoche)
 	{
+		// Émission du signal (pour que le SceneController gère l'investissement/annulation)
 		EmitSignal(SignalName.InvestmentToggled, estCoche, _currentProposition, ID_THEME);
 	}
 	
 	private void _on_txtbtn_signature_quitter_pressed()
 	{				
-		_root._sceneAmelioration.Hide();
-	}
+		_chkInvestir.Toggled -= OnChkInvestirToggled;
+		_chkInvestir.ButtonPressed = false; 
+		_chkInvestir.Toggled += OnChkInvestirToggled;
 		
+		_root._sceneAmelioration.Hide(); // cache la scene
+				
+		//appel du scenecontroller pour lancer la méthode qui reset l'audit actuel (pour permettre de réinvestir dans le même audit plus tard)
+		//(GetParent() as SceneController)?.ResetAuditInvestmentStatus(ID_THEME);
+		
+		//_chkInvestir.ButtonPressed = false; // reset le checkbox (marche à moitié encore)
+	}		
 }

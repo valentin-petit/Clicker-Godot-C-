@@ -10,7 +10,8 @@ public partial class SceneController : Node2D
 	
 	
 	private nodeRootPrincipal _root; 
-	private bool _isInvestmentApplied = false;
+	//private bool _isInvestmentApplied = false;
+	private readonly Dictionary<string, bool> _investmentsApplied = new Dictionary<string, bool>();
 	
 	public override void _Ready()
 	{
@@ -28,6 +29,12 @@ public partial class SceneController : Node2D
 		}
 		
 		ConnectAllAuditSignals(); 
+
+		// Initialiser l'état d'investissement pour chaque audit à false
+		foreach (var key in AuditNodes.Keys)
+		{
+			_investmentsApplied.Add(key, false);
+		}
 
 		// cache tous les panels (audit) à l'initialisation
 		foreach (var panel in AuditPanels.Values)
@@ -64,18 +71,45 @@ public partial class SceneController : Node2D
 	// déclenché par la page choisit au dessus et réceptionne le signal + agit en fonction de l'etat actuel de la checkbox
 	public void OnAuditInvestmentToggled(bool estCoche, AuditProposition proposition, string auditKey)
 	{
-		if (estCoche && !_isInvestmentApplied)
+		bool estActuellementApplique = _investmentsApplied.TryGetValue(auditKey, out bool isApplied) && isApplied;
+		GD.Print($"[SCENE_CTRL] Signal reçu pour {auditKey}. Coche: {estCoche}. État persistant actuel: {estActuellementApplique}");
+		if (estCoche && !estActuellementApplique)
+		{
+			ApplyInvestment(proposition, auditKey); 
+			_investmentsApplied[auditKey] = true;
+		}
+		else if (!estCoche && estActuellementApplique)
+		{
+			CancelInvestment(proposition, auditKey); 
+			_investmentsApplied[auditKey] = false; 
+			
+		}
+		else if (estCoche && estActuellementApplique)
+		{
+			GD.PrintErr($"WARNING : L'investissement pour la clé '{auditKey}' était déjà appliqué.");
+		}
+		else if (!estCoche && !estActuellementApplique)
+		{
+			GD.PrintErr($"WARNING : L'investissement pour la clé '{auditKey}' n'était pas appliqué.");
+		}
+		
+		/*
+				if (estCoche && !_investmentsApplied)
 		{
 			ApplyInvestment(proposition, auditKey); // si on coche on applique l'investissement
 		}
-		else if (!estCoche && _isInvestmentApplied)
+		else if (!estCoche && _investmentsApplied)
 		{
 			CancelInvestment(proposition, auditKey); // contraire (on l'enlève)
 		}
-		else if (estCoche && _isInvestmentApplied)
+		else if (estCoche && _investmentsApplied)
 		{		
 			GD.Print("ERROR : case déjà cochée et investissement déjà appliqué");
 		}
+		
+		
+		*/
+
 	}
 
 	private void ApplyInvestment(AuditProposition proposition, string auditKey)
@@ -93,10 +127,7 @@ public partial class SceneController : Node2D
 			
 		}else{
 			GD.PrintErr($"ERREUR DE PARSING: Cout non converti: '{proposition.Cout}'");
-			//décocher si pas assez de thunes ??
-			//_chkInvestir.Toggled -= OnChkInvestirToggled;
-			//_chkInvestir.ButtonPressed = false; 
-			//_chkInvestir.Toggled += OnChkInvestirToggled;
+
 		}
 
 		//méthode à compléter, c'est ici qu'on va enlever des % d'accidents/pannes/ defectueux
@@ -117,8 +148,7 @@ public partial class SceneController : Node2D
 		}else{
 			GD.PrintErr($"ERREUR DE PARSING: Impact non converti: '{proposition.ImpactVariable}'");
 		}
-		_isInvestmentApplied = true;
-		GD.Print($"Investissement {auditKey} appliqué."); // pour verif si c'est passé
+		_investmentsApplied[auditKey] = true;
 	}
 	
 	//idem au contraire
@@ -146,8 +176,7 @@ public partial class SceneController : Node2D
 					break;
 			}
 		}
-		_isInvestmentApplied = false;
-		GD.Print($"Investissement {auditKey} annulé.");
+		_investmentsApplied[auditKey] = false;
 	}
 	
 	// Méthode pour obtenir le Node Scene
@@ -164,6 +193,8 @@ public partial class SceneController : Node2D
 	// Méthode qui affiche le panel et déclenche son initialisation
 	public void SelectAuditPanel(string auditKey)
 	{
+		
+		ResetAuditInvestmentStatus(auditKey);
 		// cache tous les panels
 		foreach (var panel in AuditPanels.Values)
 		{
@@ -193,5 +224,13 @@ public partial class SceneController : Node2D
 			}
 		}
 	}
+	// méthode qui permet de reset le fait d'investir en cochant la checkbox
+	public void ResetAuditInvestmentStatus(string auditKey)
+	{
+		if (_investmentsApplied.ContainsKey(auditKey))
+		{	
+			_investmentsApplied[auditKey] = false;
+		}	
+	}
+}	
 	
-}

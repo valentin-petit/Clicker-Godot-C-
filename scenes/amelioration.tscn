@@ -150,7 +150,7 @@ offset_right = 397.0
 offset_bottom = 289.0
 text = "Faire appel
  à un audit
- pour 1000 $"
+ pour 500 $"
 script = ExtResource("11_iyd1d")
 
 [node name="sprMenuTel" type="Sprite2D" parent="." node_paths=PackedStringArray("MainController")]

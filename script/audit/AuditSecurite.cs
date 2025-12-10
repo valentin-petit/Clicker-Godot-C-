@@ -10,7 +10,7 @@ public partial class AuditSecurite : Node2D
 	private AuditProposition _currentProposition;
 	private CheckBox _chkInvestir;
 	
-	
+		
 	private const string ID_THEME = "S"; 
 	private Label lblObjectif;
 	private Label lblBut;
@@ -18,8 +18,7 @@ public partial class AuditSecurite : Node2D
 	private Label lblAction;
 	private Label lblCout;
 	
-	private nodeRootPrincipal _root;
-	
+	private nodeRootPrincipal _root;	
 	
 	public override void _Ready()
 	{
@@ -32,13 +31,12 @@ public partial class AuditSecurite : Node2D
 		lblAction = GetNode<Label>("sprSecuF1/lblAction");
 		lblCout = GetNode<Label>("sprSecuF1/lblCout");
 		
-
-		//InitializeAuditData(ID_THEME);
-		
 		//chk
 		_chkInvestir = GetNode<CheckBox>("sprSecuF1/chkInvestir");      
-		_chkInvestir.Toggled += OnChkInvestirToggled;
+		_chkInvestir.Toggled += OnChkInvestirToggled;	
 		
+		//test résolution bug coché permanent
+		this.VisibilityChanged += OnVisibilityChanged;	
 	}
 	
 	public void InitializeAuditData(string key)
@@ -47,7 +45,7 @@ public partial class AuditSecurite : Node2D
 		List<AuditProposition> propositions = AuditSceneFactory.GetRandomPropositions(key, 1);
 
 		if (propositions.Count >= 1)
-		{
+		{									
 			AuditProposition proposition = propositions[0];
 			_currentProposition = proposition; // chk
 			
@@ -58,25 +56,41 @@ public partial class AuditSecurite : Node2D
 			lblAction.Text = proposition.Action;
 			lblCout.Text = proposition.Cout;
 			
-			_chkInvestir.ButtonPressed = false; // chk
-			
-			GD.Print($"audit {key} chargé.");
+			GD.Print($"audit {key} chargé.");    
+			GD.Print($"[AUDIT_ENTREE {key}] CheckBox UI NE SERA PAS réinitialisée ici.");
 		}
 		else
 		{
 			GD.PrintErr($"ERREUR : Aucune proposition trouvée pour {key}.");
 		}
-	}			
+	}	
+	private void OnVisibilityChanged()
+	{
+		// L'exécution doit avoir lieu uniquement lorsque la scène devient visible
+		if (IsVisibleInTree())
+		{
+			// On utilise la même logique de déconnexion/reconnexion pour éviter les signaux
+			_chkInvestir.Toggled -= OnChkInvestirToggled;
+			
+			// 🚨 Réinitialisation forcée de l'état UI
+			_chkInvestir.ButtonPressed = false;
+			
+			_chkInvestir.Toggled += OnChkInvestirToggled;
+			
+			GD.Print($"[AUDIT_VISIBLE {ID_THEME}] CheckBox UI réinitialisée par événement de visibilité. État: {_chkInvestir.ButtonPressed}");
+		}
+	}
 	
 	//chk
 	private void OnChkInvestirToggled(bool estCoche)
-	{
+	{		
 		// Émission du signal (pour que le SceneController gère l'investissement/annulation)
-	EmitSignal(SignalName.InvestmentToggled, estCoche, _currentProposition, ID_THEME);	
+		EmitSignal(SignalName.InvestmentToggled, estCoche, _currentProposition, ID_THEME);					
 	}
 	
 	private void _on_txtbtn_signature_quitter_pressed()
-	{				
+	{								
 		_root._sceneAmelioration.Hide();
+		(GetParent() as SceneController)?.ResetAuditInvestmentStatus(ID_THEME);
 	}
 }	
