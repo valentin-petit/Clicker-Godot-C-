@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bu3srwp641tbx" path="res://script/principal/nodeRootPrincipal.cs" id="1_6y2rv"]
 [ext_resource type="Script" uid="uid://drbd05dgow5in" path="res://script/principal/btnBureau.cs" id="2_8rao1"]
 [ext_resource type="Script" uid="uid://dqdq4tt88emqh" path="res://script/principal/Sprite2dFond.cs" id="2_61cxg"]
-[ext_resource type="Texture2D" uid="uid://djxvml1pllwgs" path="res://image/fond.png" id="2_jccv5"]
+[ext_resource type="Texture2D" uid="uid://dp872ahhh3gw0" path="res://image/fondtm_page-0001(1).jpg" id="2_jccv5"]
 [ext_resource type="PackedScene" uid="uid://vbeml8p0tsjw" path="res://scenes/vente.tscn" id="6_0pxoi"]
 
 [node name="nodeRootPrincipal" type="Node2D"]
