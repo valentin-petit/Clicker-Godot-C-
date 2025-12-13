@@ -26,7 +26,6 @@ text = "Stock Produit Fini :"
 
 [node name="Sprite2DBoites" type="Sprite2D" parent="Sprite2DFond"]
 position = Vector2(590.458, -283.569)
-scale = Vector2(1, 1)
 texture = ExtResource("4_0pxoi")
 
 [node name="machinesContainer" type="HBoxContainer" parent="Sprite2DFond"]
