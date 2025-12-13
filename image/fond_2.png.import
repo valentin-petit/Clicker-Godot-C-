@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bujq2vdpqd2pc"
-path="res://.godot/imported/boites2.png-137cb3e674546c5bd249c39a23707cf1.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://cjsc2cs6b56b8"
+valid=false
 
 [deps]
 
-source_file="res://image/boites2.png"
-dest_files=["res://.godot/imported/boites2.png-137cb3e674546c5bd249c39a23707cf1.ctex"]
+source_file="res://image/fond_2.png"
 
 [params]
 

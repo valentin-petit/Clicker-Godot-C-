@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0iqefom6n3b"
-path="res://.godot/imported/fond.png-8eddac359943349967b27f5e7712d190.ctex"
+uid="uid://dpe0kvr5ccgsc"
+path="res://.godot/imported/signature_signe.png-afc5313d7fd6439b25cdbb894959d2d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fond.png"
-dest_files=["res://.godot/imported/fond.png-8eddac359943349967b27f5e7712d190.ctex"]
+source_file="res://signature_signe.png"
+dest_files=["res://.godot/imported/signature_signe.png-afc5313d7fd6439b25cdbb894959d2d6.ctex"]
 
 [params]
 

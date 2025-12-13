@@ -4,15 +4,21 @@ using System.Collections.Generic;
 
 public partial class AuditSecurite : Node2D
 {
+	//chk
+	[Signal]
+	public delegate void InvestmentToggledEventHandler(bool isChecked, AuditProposition proposition, string auditKey);
+	private AuditProposition _currentProposition;
+	private CheckBox _chkInvestir;
+	
+		
 	private const string ID_THEME = "S"; 
 	private Label lblObjectif;
 	private Label lblBut;
 	private Label lblStatutActuel;
 	private Label lblAction;
 	private Label lblCout;
-	private Label lblImpact;
 	
-	private nodeRootPrincipal _root;
+	private nodeRootPrincipal _root;	
 	
 	public override void _Ready()
 	{
@@ -24,61 +30,72 @@ public partial class AuditSecurite : Node2D
 		
 		lblAction = GetNode<Label>("sprSecuF1/lblAction");
 		lblCout = GetNode<Label>("sprSecuF1/lblCout");
-		lblImpact = GetNode<Label>("sprSecuF1/lblImpact");
-		//test des audits random
-		InitializeAuditData(ID_THEME);
+		
+		//chk
+		_chkInvestir = GetNode<CheckBox>("sprSecuF1/chkInvestir");      
+		_chkInvestir.Toggled += OnChkInvestirToggled;	
+		
+		//test résolution bug coché permanent
+		this.VisibilityChanged += OnVisibilityChanged;	
 	}
 	
-	private void InitializeAuditData(string key)
+	public void InitializeAuditData(string key)
 	{
-		// Appelez la NOUVELLE méthode statique de la Fabrique pour obtenir 1 proposition
-		// Nous voulons 1 seule proposition complète à la fois
+		//prend une propal parmis celles référencé dans AuditSceneFactory
 		List<AuditProposition> propositions = AuditSceneFactory.GetRandomPropositions(key, 1);
 
 		if (propositions.Count >= 1)
-		{
+		{									
 			AuditProposition proposition = propositions[0];
-
-			// 2. Remplir les Labels avec les données de la proposition
+			_currentProposition = proposition; // chk
+			
+			// remplissage des labels par la propal
 			lblObjectif.Text = proposition.Objectif;
 			lblBut.Text = proposition.But;
 			lblStatutActuel.Text = proposition.StatutActuel;
 			lblAction.Text = proposition.Action;
 			lblCout.Text = proposition.Cout;
-			lblImpact.Text = proposition.Impact;
 			
-			GD.Print($"Proposition d'audit {key} chargée.");
+			_chkInvestir.Toggled -= OnChkInvestirToggled;
+		
+			_chkInvestir.ButtonPressed = false;
+		
+			_chkInvestir.Toggled += OnChkInvestirToggled;
+			
+			GD.Print($"audit {key} chargé.");    
+			GD.Print($"[AUDIT_ENTREE {key}] CheckBox UI NE SERA PAS réinitialisée ici.");
 		}
 		else
 		{
-			GD.PrintErr($"ERREUR DE FABRIQUE : Aucune proposition trouvée pour la clé : {key}.");
+			GD.PrintErr($"ERREUR : Aucune proposition trouvée pour {key}.");
+		}
+	}	
+	private void OnVisibilityChanged()
+	{
+		// L'exécution doit avoir lieu uniquement lorsque la scène devient visible
+		if (IsVisibleInTree())
+		{
+			// On utilise la même logique de déconnexion/reconnexion pour éviter les signaux
+			_chkInvestir.Toggled -= OnChkInvestirToggled;
+			
+			// 🚨 Réinitialisation forcée de l'état UI
+			_chkInvestir.ButtonPressed = false;
+			
+			_chkInvestir.Toggled += OnChkInvestirToggled;
+			
+			GD.Print($"[AUDIT_VISIBLE {ID_THEME}] CheckBox UI réinitialisée par événement de visibilité. État: {_chkInvestir.ButtonPressed}");
 		}
 	}
 	
-	private void _on_btn_investir_pressed()
-	{
-		string coutNettoye = lblCout.Text.Replace(" ", ""); 
-
-		if (int.TryParse(coutNettoye, out int coutInt))
-		{
-			float coutFloat = (float)coutInt;
-			
-			GD.Print($"Coût d'investissement : {coutFloat} (en float)");
-
-			if(_root != null && _root.getArgent() >= coutFloat) 
-			{
-				_root.subArgent(coutFloat); 
-				
-				GD.Print("Investissement réussi ! Argent dépensé et impact appliqué.");
-			}        
-			else 
-			{
-				GD.PrintErr("Fonds insuffisants. Impossible de payer cette recommandation.");
-			}
-		}
-		else
-		{
-			GD.PrintErr("Erreur critique : Problème de format de coût. Le coût n'est pas un nombre valide.");
-		}
+	//chk
+	private void OnChkInvestirToggled(bool estCoche)
+	{		
+		// Émission du signal (pour que le SceneController gère l'investissement/annulation)
+		EmitSignal(SignalName.InvestmentToggled, estCoche, _currentProposition, ID_THEME);					
+	}
+	
+	private void _on_txtbtn_signature_quitter_pressed()
+	{								
+		_root._sceneAmelioration.Hide();
 	}
 }	
