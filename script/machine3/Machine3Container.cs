@@ -198,36 +198,30 @@ public partial class Machine3Container : Control
 		}
 	}
 	
-	public void Checkaccident()
+	// Fonction de vérification d'accident
+	public void Checkaccident() 
 	{
-		// Logique d'accident conservée telle quelle
-		double proba = (Math.Sqrt(_vitesse) / 100.0) / 1.7;
-		double tirage = _rng.NextDouble(); 
-
-		if (tirage < proba)
+		// 1. Vérifier si la vitesse est suffisante (> 2)
+		if(_estEnPanne)
 		{
-			GD.Print("Accident Machine 3");
-			int tirage2 = _rng.Next(100); 
+			return;
+		}
+		if (_vitesse > 2) 
+		{
+			// CORRECTION 1 : On définit la variable 'pourcentage' localement
+			// (Basé sur votre logique dans UpdateStats : vitesse * 2.5)
+			double pourcentage = _vitesse * 2.5;
 
-			if (tirage2 < 60)                
+			// CORRECTION 2 : On remplace Math.random() par GD.RandRange(0f, 100f)
+			// GD.RandRange est la méthode native de Godot pour l'aléatoire
+			if (GD.RandRange(0f, 100f) < (pourcentage - 10)) 
 			{
-				GD.Print("il s'est coupé\nvous payer 1000$ de compensation");
-				_root.subArgent(1000);
-			}
-			else if (tirage2 < 95)               
-			{
-				GD.Print("il a le bras cassé\nvous payer 7000$ de compensation");
-				_root.subArgent(7000);
-			}
-			else                              
-			{
-				GD.Print("un employer est tomber dans une machine\nil est mort\nvous payer 55000$ de compensation");
-				_root.subArgent(55000);
+				// 3. Si l'accident arrive
+				_root.subArgent(5000);
+				_root.afficher_overlay_accident();
 			}
 		}
 	}
-
-	// --- NOUVELLE LOGIQUE DE PANNE PROBABILISTE (Copie conforme Machine 2) ---
 	public void CheckEnPanne()
 	{
 		if (_estEnPanne) return;
