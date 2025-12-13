@@ -23,12 +23,12 @@ public partial class AuditSceneFactory : Node2D
 				
 			
 				new AuditProposition(
-					objectif: "remplirS2",
-					but: "remplirS2",
-					statutActuel: "S2remplir",
-					action: "remplirS2",
+					objectif: "Évaluer et renforcer la formation des opérateurs sur la consignation des énergies (LOTO).",
+					but: "Minimiser le risque d'accidents graves lors des interventions de maintenance en assurant une procédure de mise hors tension fiable.",
+					statutActuel: "Manque de formation LOTO : 40% du personnel de maintenance et de production n'a pas suivi de recyclage depuis 12 mois.",
+					action: "Mise en œuvre d'un programme de formation pratique et théorique obligatoire pour l'ensemble du personnel de maintenance et de production.",
 					cout: "500",
-					impactVariable: "-5" 
+					impactVariable: "-5"
 
 				)
 				
@@ -37,21 +37,21 @@ public partial class AuditSceneFactory : Node2D
 		{"Q", new List<AuditProposition> 
 			{
 				new AuditProposition(
-					objectif: "remplirQ1",
-					but: "remplirQ1",
-					statutActuel: "Q1remplir",
-					action: "remplirQ1",
+					objectif: "Vérification et étalonnage des instruments de mesure critiques (pieds à coulisse, micromètres) sur les lignes de production.",
+					but: "Assurer la précision des contrôles dimensionnels pour détecter les dérives de production avant la fabrication de pièces défectueuses en série.",
+					statutActuel: "Non-conforme : 20% des outils de mesure n'ont pas été étalonnés depuis plus de six mois.",
+					action: "Programme d'étalonnage systématique et achat de 5 nouveaux instruments de référence certifiés.",
 					cout: "500",
-					impactVariable: "-10" 
+					impactVariable: "-10"
 				),							
 							
 				new AuditProposition(
-					objectif: "remplirQ2",
-					but: "remplirQ2",
-					statutActuel: "remplirQ2",
-					action: "remplirQ2",
+					objectif: "Standardisation et renforcement du contrôle visuel et tactile des chaussettes en fin de ligne (inspection finale).",
+					but: "Améliorer la capacité des opérateurs à détecter les défauts de surface (boulochage, fils tirés) et de structure avant l'emballage, réduisant les retours clients.",
+					statutActuel: "Variation importante : Les critères d'acceptation et de rejet dépendent de l'opérateur, entraînant un taux élevé de 'faux positifs' et de 'faux négatifs' en inspection.",
+					action: "Création de gabarits d'inspection standardisés, mise en place d'un 'mur des défauts' visuel, et formation certifiante des opérateurs à l'inspection selon les nouveaux standards.",
 					cout: "500",
-					impactVariable: "-10" 
+					impactVariable: "-10"
 				)
 			} 
 		
@@ -59,21 +59,23 @@ public partial class AuditSceneFactory : Node2D
 		{"F", new List<AuditProposition> 
 			{
 				new AuditProposition(
-					objectif: "remplirF1",
-					but: "remplirF1",
-					statutActuel: "F1remplir",
-					action: "remplirF1",
+					objectif: "Mise en œuvre d'un plan de maintenance préventive (MP) pour les systèmes de tricotage et de motorisation.",
+					but: "Réduire les pannes imprévues et l'usure des composants critiques (cames, moteurs) en basant l'entretien sur le temps de fonctionnement.",
+					statutActuel: "Maintenance corrective : La maintenance est effectuée après la panne, entraînant un temps d'arrêt machine imprévu élevé (MTTR élevé).",
+					action: "Déploiement d'un calendrier de MP strict (lubrification, remplacement des pièces d'usure) pour les 10 machines les plus critiques.",
 					cout: "500",
-					impactVariable: "-10" 
+					impactVariable: "-10"
+					
+					
 				),
 															
 				new AuditProposition(
-					objectif: "remplirF2",
-					but: "remplirF2",
-					statutActuel: "remplirF2",
-					action: "remplirF2",
+					objectif: "Audit de l'état des systèmes pneumatiques et des alimentations électriques des machines.",
+					but: "Assurer la stabilité des systèmes d'énergie pour prévenir les pannes causées par les fluctuations de pression d'air ou les pics électriques.",
+					statutActuel: "Pression d'air et électricité instables : Fuites dans le réseau pneumatique et filtres encrassés causant des arrêts machine aléatoires.",
+					action: "Réparation des fuites d'air comprimé, remplacement des filtres pneumatiques et installation de régulateurs de tension pour stabiliser l'alimentation électrique.",
 					cout: "500",
-					impactVariable: "-5" 
+					impactVariable: "-5"
 				)
 			} 
 		}

@@ -56,6 +56,12 @@ public partial class AuditSecurite : Node2D
 			lblAction.Text = proposition.Action;
 			lblCout.Text = proposition.Cout;
 			
+			_chkInvestir.Toggled -= OnChkInvestirToggled;
+		
+			_chkInvestir.ButtonPressed = false;
+		
+			_chkInvestir.Toggled += OnChkInvestirToggled;
+			
 			GD.Print($"audit {key} chargé.");    
 			GD.Print($"[AUDIT_ENTREE {key}] CheckBox UI NE SERA PAS réinitialisée ici.");
 		}
@@ -91,6 +97,5 @@ public partial class AuditSecurite : Node2D
 	private void _on_txtbtn_signature_quitter_pressed()
 	{								
 		_root._sceneAmelioration.Hide();
-		(GetParent() as SceneController)?.ResetAuditInvestmentStatus(ID_THEME);
 	}
 }	

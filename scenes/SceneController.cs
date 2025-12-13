@@ -91,25 +91,7 @@ public partial class SceneController : Node2D
 		else if (!estCoche && !estActuellementApplique)
 		{
 			GD.PrintErr($"WARNING : L'investissement pour la clé '{auditKey}' n'était pas appliqué.");
-		}
-		
-		/*
-				if (estCoche && !_investmentsApplied)
-		{
-			ApplyInvestment(proposition, auditKey); // si on coche on applique l'investissement
-		}
-		else if (!estCoche && _investmentsApplied)
-		{
-			CancelInvestment(proposition, auditKey); // contraire (on l'enlève)
-		}
-		else if (estCoche && _investmentsApplied)
-		{		
-			GD.Print("ERROR : case déjà cochée et investissement déjà appliqué");
-		}
-		
-		
-		*/
-
+		}		
 	}
 
 	private void ApplyInvestment(AuditProposition proposition, string auditKey)
@@ -192,8 +174,7 @@ public partial class SceneController : Node2D
 	
 	// Méthode qui affiche le panel et déclenche son initialisation
 	public void SelectAuditPanel(string auditKey)
-	{
-		
+	{		
 		ResetAuditInvestmentStatus(auditKey);
 		// cache tous les panels
 		foreach (var panel in AuditPanels.Values)
