@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4oi5mpyca0xt"
-path="res://.godot/imported/boites4.png-eb6d88052980116b3b22ca4affc547ff.ctex"
+uid="uid://ddu2k5eqmcp44"
+path="res://.godot/imported/boites2.png-137cb3e674546c5bd249c39a23707cf1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/boites4.png"
-dest_files=["res://.godot/imported/boites4.png-eb6d88052980116b3b22ca4affc547ff.ctex"]
+source_file="res://image/boites2.png"
+dest_files=["res://.godot/imported/boites2.png-137cb3e674546c5bd249c39a23707cf1.ctex"]
 
 [params]
 

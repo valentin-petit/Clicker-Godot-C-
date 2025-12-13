@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byo2dr2hek1kp"
-path="res://.godot/imported/blaisser1.png-0e5e62a1733e047b2aa3c2cf5fe20705.ctex"
+uid="uid://blidyiticxvyf"
+path="res://.godot/imported/transparent.png-9982c6d1987a3740516a6515f45f26dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/blaisser1.png"
-dest_files=["res://.godot/imported/blaisser1.png-0e5e62a1733e047b2aa3c2cf5fe20705.ctex"]
+source_file="res://image/transparent.png"
+dest_files=["res://.godot/imported/transparent.png-9982c6d1987a3740516a6515f45f26dd.ctex"]
 
 [params]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnrpy1j4wndt0"]
+[gd_scene load_steps=7 format=3 uid="uid://dnrpy1j4wndt0"]
 
 [ext_resource type="Script" uid="uid://bu3srwp641tbx" path="res://script/principal/nodeRootPrincipal.cs" id="1_6y2rv"]
 [ext_resource type="Script" uid="uid://drbd05dgow5in" path="res://script/principal/btnBureau.cs" id="2_8rao1"]
 [ext_resource type="Script" uid="uid://dqdq4tt88emqh" path="res://script/principal/Sprite2dFond.cs" id="2_61cxg"]
 [ext_resource type="Texture2D" uid="uid://dp872ahhh3gw0" path="res://image/fondtm_page-0001(1).jpg" id="2_jccv5"]
+[ext_resource type="Texture2D" uid="uid://blidyiticxvyf" path="res://image/transparent.png" id="4_0pxoi"]
 [ext_resource type="PackedScene" uid="uid://vbeml8p0tsjw" path="res://scenes/vente.tscn" id="6_0pxoi"]
 
 [node name="nodeRootPrincipal" type="Node2D"]
@@ -14,6 +15,19 @@ position = Vector2(574, 319)
 scale = Vector2(0.74349, 0.634766)
 texture = ExtResource("2_jccv5")
 script = ExtResource("2_61cxg")
+
+[node name="lblStockProduitFini" type="Label" parent="Sprite2DFond"]
+offset_left = 469.408
+offset_top = -304.049
+offset_right = 727.408
+offset_bottom = -267.049
+theme_override_font_sizes/font_size = 23
+text = "Stock Produit Fini :"
+
+[node name="Sprite2DBoites" type="Sprite2D" parent="Sprite2DFond"]
+position = Vector2(590.458, -283.569)
+scale = Vector2(1, 1)
+texture = ExtResource("4_0pxoi")
 
 [node name="machinesContainer" type="HBoxContainer" parent="Sprite2DFond"]
 anchors_preset = 12
@@ -63,14 +77,6 @@ offset_bottom = -400.778
 theme_override_font_sizes/font_size = 23
 text = "Argent:"
 
-[node name="lblStockProduitFini" type="Label" parent="Sprite2DFond"]
-offset_left = 490.928
-offset_top = -278.843
-offset_right = 748.928
-offset_bottom = -241.843
-theme_override_font_sizes/font_size = 23
-text = "Stock Produit Fini :"
-
 [node name="ControlVente" parent="Sprite2DFond" instance=ExtResource("6_0pxoi")]
 offset_left = 246.137
 offset_top = -433.23
@@ -86,17 +92,17 @@ text = "Stock de laine :"
 
 [node name="lblStockTissue" type="Label" parent="Sprite2DFond"]
 offset_left = -309.352
-offset_top = -281.994
+offset_top = -299.323
 offset_right = -131.352
-offset_bottom = -249.994
+offset_bottom = -267.323
 theme_override_font_sizes/font_size = 23
 text = "Stock de tissue :"
 
 [node name="lblStockChaussette" type="Label" parent="Sprite2DFond"]
-offset_left = 95.4956
-offset_top = -269.391
-offset_right = 328.496
-offset_bottom = -237.391
+offset_left = 98.1856
+offset_top = -302.474
+offset_right = 331.186
+offset_bottom = -270.474
 theme_override_font_sizes/font_size = 23
 text = "Stock de chaussette :"
 

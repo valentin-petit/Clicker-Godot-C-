@@ -41,6 +41,7 @@ public partial class nodeRootPrincipal : Node2D
 	private Button _btnAchatLaine;
 	
 	public Node2D _sceneAmelioration;
+	private Sprite2D _spriteBoites;
 	private TextureRect overlay;
 
 
@@ -72,6 +73,9 @@ public partial class nodeRootPrincipal : Node2D
 		_lblStockChaussette.Text += " " + _stockChaussette;
 		_lblStockProduitFini.Text += " " + _stockProduitFini;
 		
+		
+		_spriteBoites = GetNode<Sprite2D>("Sprite2DFond/Sprite2DBoites");
+		_spriteBoites.Texture = GD.Load<Texture2D>("res://image/transparent.png");
 		
 		//creation de la scene amelioration
 		PackedScene ps = GD.Load<PackedScene>("res://scenes/amelioration.tscn");
@@ -203,7 +207,7 @@ public partial class nodeRootPrincipal : Node2D
 		AddChild(overlay);
 
 		// Image
-		overlay.Texture = GD.Load<Texture2D>("res://image/blaisser1.png");
+		overlay.Texture = GD.Load<Texture2D>("res://image/blesse1.png");
 
 		// Création du label pour le message
 		Label message = new Label();
@@ -311,7 +315,26 @@ public partial class nodeRootPrincipal : Node2D
 	public void addStockProduitFini(int ajout)
 	{
 		_stockProduitFini += ajout;
-		_lblStockProduitFini.Text = "Stock de Produit Finit: " + _stockProduitFini;
+		_lblStockProduitFini.Text = "Stock de Produit Fini: " + _stockProduitFini;
+
+		if (_spriteBoites == null) return;
+
+		if (_stockProduitFini < 5)
+		{
+			_spriteBoites.Texture = GD.Load<Texture2D>("res://image/transparent.png");
+		}
+		else if (_stockProduitFini < 43)
+		{
+			_spriteBoites.Texture = GD.Load<Texture2D>("res://image/boites1.png");
+		}
+		else if (_stockProduitFini < 71)
+		{
+			_spriteBoites.Texture = GD.Load<Texture2D>("res://image/boites2.png");
+		}
+		else
+		{
+			_spriteBoites.Texture = GD.Load<Texture2D>("res://image/boites3.png");
+		}
 	}
 
 	public void subStockProduitFini(int retrait)
