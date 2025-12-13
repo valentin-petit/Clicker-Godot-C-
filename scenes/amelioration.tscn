@@ -51,7 +51,7 @@ offset_right = 121.0
 offset_bottom = 90.0
 
 [node name="Control" type="Control" parent="Sprite2DOrdinateur/ScrollContainer"]
-custom_minimum_size = Vector2(450, 4000)
+custom_minimum_size = Vector2(450, 420)
 layout_mode = 2
 
 [node name="btnAmelPub" type="Button" parent="Sprite2DOrdinateur/ScrollContainer/Control"]
