@@ -189,6 +189,7 @@ public partial class Machine2Container : Control
 
 	public void Checkaccident()
 	{
+		/*
 		double proba = (Math.Sqrt(_vitesse) / 100.0) / 99.7;
 		double tirage = _rng.NextDouble(); 
 
@@ -212,7 +213,7 @@ public partial class Machine2Container : Control
 				_root.subArgent(55000);
 				_root.afficher_overlay_accident();
 			}
-		}
+		}*/
 	}
 
 	public void CheckEnPanne()

@@ -203,7 +203,7 @@ public partial class nodeRootPrincipal : Node2D
 		AddChild(overlay);
 
 		// Image
-		overlay.Texture = GD.Load<Texture2D>("res://image/Blaisse1.png");
+		overlay.Texture = GD.Load<Texture2D>("res://image/blaisser1.png");
 
 		// Création du label pour le message
 		Label message = new Label();
