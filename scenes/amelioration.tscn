@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://c12ow3wya4t7k" path="res://script/amelioration/BtnAudit.cs" id="11_iyd1d"]
 [ext_resource type="Texture2D" uid="uid://dbybr0dqiyoex" path="res://teltexte.png" id="12_qykaa"]
 [ext_resource type="Script" uid="uid://c2yl1wvo0egic" path="res://script/amelioration/MenuTel.cs" id="13_hwpd6"]
-[ext_resource type="Script" uid="uid://d01y3yagi41rg" path="res://script/amelioration/AuditSceneFactory.cs" id="13_sfknt"]
+[ext_resource type="Script" uid="uid://d01y3yagi41rg" path="res://script/audit/AuditSceneFactory.cs" id="13_sfknt"]
 [ext_resource type="PackedScene" uid="uid://chjjcxrt241od" path="res://scenes/AuditSecurite.tscn" id="15_1knl6"]
 [ext_resource type="PackedScene" uid="uid://ebgg87otujtb" path="res://scenes/AuditQualite.tscn" id="16_e1itk"]
 [ext_resource type="PackedScene" uid="uid://4r5nsxpylkxm" path="res://scenes/AuditFiabilite.tscn" id="17_stp56"]

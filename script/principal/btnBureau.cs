@@ -15,7 +15,9 @@ public partial class btnBureau : Button
 	}
 	private void OuvrirBureau()
 	{
+		_root.SwitchBureauState();
 		_root._sceneAmelioration.Show();
+		
 		
 	}
 }

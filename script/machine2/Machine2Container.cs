@@ -192,7 +192,7 @@ public partial class Machine2Container : Control
 		double proba = (Math.Sqrt(_vitesse) / 100.0) / 99.7;
 		double tirage = _rng.NextDouble(); 
 
-		if (tirage < proba)
+		if (tirage > proba)
 		{
 			GD.Print("Accident Machine 2");
 			int tirage2 = _rng.Next(100); 
@@ -200,14 +200,17 @@ public partial class Machine2Container : Control
 			if (tirage2 < 60)                
 			{
 				_root.subArgent(1000);
+				_root.afficher_overlay_accident();
 			}
 			else if (tirage2 < 95)              
 			{
 				_root.subArgent(7000);
+				_root.afficher_overlay_accident();
 			}
 			else                              
 			{
 				_root.subArgent(55000);
+				_root.afficher_overlay_accident();
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4r5nsxpylkxm"]
 
-[ext_resource type="Script" uid="uid://ctxu71w8m38l7" path="res://script/amelioration/AuditFiabilite.cs" id="1_380xb"]
+[ext_resource type="Script" uid="uid://ctxu71w8m38l7" path="res://script/audit/AuditFiabilite.cs" id="1_380xb"]
 [ext_resource type="Texture2D" uid="uid://xdm8xbr8uae3" path="res://feuille_audit.png" id="2_vdgk8"]
 
 [node name="AuditFiabilite" type="Node2D"]

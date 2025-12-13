@@ -3,21 +3,24 @@ using System;
 
 public partial class nodeRootPrincipal : Node2D
 {
-	private float _argent=5000.00f;
+	private float _argent = 500000.00f;
 	
-	private float _reputation=50;
+	private float _reputation = 50;
 	
-	private int _stockLaine=150;
-	private int _stockTissue=0;
-	private int _stockChaussette=0;//le produit n'est pas fini ilrest l'embalage
-	private int _stockProduitFini=0;
+	private int _stockLaine = 150;
+	private int _stockTissue = 0;
+	private int _stockChaussette = 0; //le produit n'est pas fini ilrest l'embalage
+	private int _stockProduitFini = 0;
 	// float:F2 pour garder 2 decimal, valeur = (float)Math.Round(valeur, 2);
 	
 	private PackedScene _machine1Scene = GD.Load<PackedScene>("res://scenes/machine1.tscn");
 	private PackedScene _machine2Scene = GD.Load<PackedScene>("res://scenes/machine2.tscn");
 	private PackedScene _machine3Scene = GD.Load<PackedScene>("res://scenes/machine3.tscn");
 	
-	public HBoxContainer machinesContainer; 
+	public HBoxContainer machinesContainer;
+	
+	
+	private bool _bureauOuvert;
 	
 	public VBoxContainer colonne1;
 	public VBoxContainer colonne2;
@@ -38,6 +41,8 @@ public partial class nodeRootPrincipal : Node2D
 	private Button _btnAchatLaine;
 	
 	public Node2D _sceneAmelioration;
+	private TextureRect overlay;
+
 
 	public Timer tmrMachine;
 	public Node2D _sceneAudit;
@@ -55,7 +60,7 @@ public partial class nodeRootPrincipal : Node2D
 		_lblStockProduitFini = GetNode<Label>("Sprite2DFond/lblStockProduitFini");
 		
 		_btnAchatLaine = GetNode<Button>("Sprite2DFond/btnAchatLaine");
-		_btnAchatLaine.Pressed+=achatLaine;
+		_btnAchatLaine.Pressed += achatLaine;
 		
 		
 		
@@ -79,6 +84,8 @@ public partial class nodeRootPrincipal : Node2D
 		_sceneAudit = (Node2D)psAudit.Instantiate();
 		AddChild(_sceneAudit);
 		_sceneAudit.Hide();
+		
+				
 
 		// instanciation des machines
 		machinesContainer = GetNode<HBoxContainer>("Sprite2DFond/machinesContainer");
@@ -86,6 +93,11 @@ public partial class nodeRootPrincipal : Node2D
 		colonne1 = GetNode<VBoxContainer>("Sprite2DFond/machinesContainer/colonne1");
 		colonne2 = GetNode<VBoxContainer>("Sprite2DFond/machinesContainer/colonne2");
 		colonne3 = GetNode<VBoxContainer>("Sprite2DFond/machinesContainer/colonne3");
+		
+		colonne1.AddThemeConstantOverride("separation", 65);
+		colonne2.AddThemeConstantOverride("separation", 65);
+		colonne3.AddThemeConstantOverride("separation", 65);
+
 				
 		// Colonne 1
 		_machineCountCol1++;
@@ -118,17 +130,99 @@ public partial class nodeRootPrincipal : Node2D
 
 		// Démarrer le timer
 		tmrMachine.Start();
-		
+
+		// --- CORRECTION FOCUS ---
+		// On désactive le focus sur tous les boutons déjà présents
+		DesactiverFocusBoutons(this);
+	}
+
+	public override void _Process(double delta)
+	{
+		// On vérifie l'état global du clavier (ignore le focus des boutons)
+		if (overlay != null)
+		{
+			// On utilise Input.IsActionJustPressed qui marche tout le temps
+			if (Input.IsActionJustPressed("ui_accept"))
+			{
+				overlay.QueueFree();
+				overlay = null;
+			}
+		}
+	}
+
+	// --- FONCTION UTILITAIRE POUR LE FOCUS ---
+	private void DesactiverFocusBoutons(Node node)
+	{
+		if (node is BaseButton bouton)
+		{
+			bouton.FocusMode = Control.FocusModeEnum.None;
+		}
+		foreach (Node enfant in node.GetChildren())
+		{
+			DesactiverFocusBoutons(enfant);
+		}
 	}
 	
 	public void OnTmrMachineTimeout()
 	{
 		//GD.Print("Ting : timerMachine de scene principale");
 	}
+	public void SwitchBureauState()
+	{
+		if(_bureauOuvert)
+		{
+			_bureauOuvert=false;
+		}
+		else{
+			_bureauOuvert=true;
+		}
+	}
+	public void afficher_overlay_accident()
+{
+	// SECURITÉ : Si un overlay est déjà affiché, on refuse d'en créer un nouveau.
+	// Cela empêche l'ancien d'être "perdu" et de bloquer le jeu.
+	if (overlay != null) return; 
+
+	// Création de l'overlay
+	overlay = new TextureRect();
+	// ... la suite de votre code reste identique ...
+	
+		// Création de l'overlay
+		overlay = new TextureRect();
+		overlay.StretchMode = TextureRect.StretchModeEnum.Scale;
+
+		// Ancres pour occuper tout l’écran
+		overlay.AnchorLeft = 0.0f;
+		overlay.AnchorTop = 0.0f;
+		overlay.AnchorRight = 1.0f;
+		overlay.AnchorBottom = 1.0f;
+
+		overlay.Position = Vector2.Zero;
+		overlay.Size = GetViewport().GetVisibleRect().Size;
+		overlay.ZIndex = 1;
+		AddChild(overlay);
+
+		// Image
+		overlay.Texture = GD.Load<Texture2D>("res://image/Blaisse1.png");
+
+		// Création du label pour le message
+		Label message = new Label();
+		message.Text = "Il y a eu un accident\nAppuyez sur Entrée";
+		message.AnchorLeft = 0.0f;
+		message.AnchorTop = 0.0f;
+		message.AnchorRight = 1.0f;
+		message.AnchorBottom = 1.0f;
+		message.Size = GetViewport().GetVisibleRect().Size;
+		message.HorizontalAlignment = HorizontalAlignment.Center;
+		message.VerticalAlignment = VerticalAlignment.Center;
+		message.AddThemeColorOverride("font_color", Colors.Red);
+		message.AddThemeFontSizeOverride("font_size", 32);
+
+		overlay.AddChild(message);
+	}
 	
 	public void AddNewMachine(VBoxContainer colonne, int machineNumber)
 	{
-		
 		Control machineContainer;
 		if (colonne==colonne1)
 		{
@@ -156,15 +250,17 @@ public partial class nodeRootPrincipal : Node2D
 		{
 			machineArea.InputPickable = false;
 		}
+
+		// --- CORRECTION FOCUS ---
+		// On nettoie les boutons de la nouvelle machine
+		DesactiverFocusBoutons(machineContainer);
+
 		colonne.AddChild(machineContainer);
 		
 	}
 	
 
-	public override void _Process(double delta)
-	{
-		
-	}
+
 	public void achatLaine()
 	{
 		if(_argent>150)
@@ -284,6 +380,5 @@ public partial class nodeRootPrincipal : Node2D
 	{
 		return _stockChaussette;
 	}
-
 
 }
