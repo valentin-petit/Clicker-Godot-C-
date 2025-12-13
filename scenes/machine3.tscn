@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1x7hty3cqs8l"]
+[gd_scene load_steps=5 format=3 uid="uid://c1x7hty3cqs8l"]
 
 [ext_resource type="Script" uid="uid://dfhmrrpujr5sq" path="res://script/machine3/Machine3Container.cs" id="1_3u2y5"]
 [ext_resource type="Texture2D" uid="uid://5pmoiwuebgv1" path="res://image/machine3frame0.png" id="2_3u2y5"]
+[ext_resource type="Texture2D" uid="uid://37hudorvuxo3" path="res://image/repar.jpeg" id="3_mpmni"]
+[ext_resource type="Script" uid="uid://duioemkw2tqx2" path="res://script/machine3/btnReparer3.cs" id="4_mpmni"]
 
 [node name="MachineContainer" type="Control"]
 custom_minimum_size = Vector2(150, 150)
@@ -76,3 +78,21 @@ offset_top = 73.0
 offset_right = 372.0
 offset_bottom = 96.0
 text = "Vitesse N°1"
+
+[node name="btnReparer" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 31.0
+offset_right = 122.0
+offset_bottom = 83.0
+texture_normal = ExtResource("3_mpmni")
+script = ExtResource("4_mpmni")
+
+[node name="lblReparer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = -22.0
+offset_right = 130.0
+offset_bottom = 27.0
+text = "Reparer:
+   500 €"

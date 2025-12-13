@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0xfdjxkwr26i"]
+[gd_scene load_steps=5 format=3 uid="uid://c0xfdjxkwr26i"]
 
 [ext_resource type="Script" uid="uid://mdy6qr60dc4v" path="res://script/machine2/Machine2Container.cs" id="1_2oyws"]
 [ext_resource type="Texture2D" uid="uid://bqu7cql2f00r1" path="res://image/machine2frame0.png" id="2_2oyws"]
+[ext_resource type="Texture2D" uid="uid://37hudorvuxo3" path="res://image/repar.jpeg" id="3_vjx6g"]
+[ext_resource type="Script" uid="uid://xk1seug2jqkn" path="res://script/machine2/btnReparer2.cs" id="4_1uglw"]
 
 [node name="MachineContainer" type="Control"]
 custom_minimum_size = Vector2(150, 150)
@@ -76,3 +78,23 @@ offset_top = 44.0
 offset_right = 322.0
 offset_bottom = 78.0
 text = "-"
+
+[node name="btnReparer" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.027
+offset_left = 68.0
+offset_top = 37.0
+offset_right = 86.0
+offset_bottom = 47.335
+texture_normal = ExtResource("3_vjx6g")
+script = ExtResource("4_1uglw")
+
+[node name="lblReparer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -15.0
+offset_right = 131.0
+offset_bottom = 34.0
+text = "Reparer:
+   500 €"

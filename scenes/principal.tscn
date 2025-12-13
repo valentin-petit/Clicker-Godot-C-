@@ -57,6 +57,7 @@ offset_left = -487.0
 offset_top = -400.0
 offset_right = -379.0
 offset_bottom = -230.0
+mouse_default_cursor_shape = 3
 theme_type_variation = &"FlatButton"
 script = ExtResource("2_8rao1")
 

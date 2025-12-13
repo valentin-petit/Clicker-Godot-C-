@@ -152,6 +152,17 @@ public partial class nodeRootPrincipal : Node2D
 				overlay = null;
 			}
 		}
+		if (Input.IsKeyPressed(Key.T))
+		{
+			// Astuce : On vérifie si c'est la "première" frame de l'appui 
+			// pour éviter d'écrire 60 fois si vous restez appuyé une seconde.
+			// Note: Pour faire ça proprement sans InputMap, on peut juste accepter que ça défile un peu vite
+			// ou utiliser un petit compteur simple, mais pour un test rapide :
+			
+			GD.Print("\n--- NOUVEAU TEST ---");
+			TestLectureProbabilites();
+			TestLectureAccidents();
+		}
 	}
 
 	// --- FONCTION UTILITAIRE POUR LE FOCUS ---
@@ -402,6 +413,154 @@ public partial class nodeRootPrincipal : Node2D
 	public int getStockChaussette()
 	{
 		return _stockChaussette;
+	}
+	
+	
+	// Fonction pour récupérer le tableau de probabilités [3 colonnes][3 machines max]
+	public double?[][] GetTableauProbabilites()
+	{
+		// 1. Initialisation du tableau jagged (irrégulier) [3][3]
+		// On utilise 'double?' pour pouvoir stocker null
+		double?[][] tableauPannes = new double?[3][];
+		
+		// On initialise les 3 colonnes
+		tableauPannes[0] = new double?[3]; // Colonne 1
+		tableauPannes[1] = new double?[3]; // Colonne 2
+		tableauPannes[2] = new double?[3]; // Colonne 3
+
+		// Liste pour itérer facilement sur vos variables de colonnes
+		VBoxContainer[] lesColonnes = { colonne1, colonne2, colonne3 };
+
+		// 2. Parcourir chaque colonne (i = index de la colonne 0 à 2)
+		for (int i = 0; i < 3; i++)
+		{
+			// Récupérer les enfants (les machines) de la colonne actuelle
+			var machines = lesColonnes[i].GetChildren();
+
+			// 3. Parcourir les 3 slots possibles (j = index de la machine 0 à 2)
+			for (int j = 0; j < 3; j++)
+			{
+				if (j < machines.Count)
+				{
+					// IL Y A UNE MACHINE
+					Node machine = machines[j];
+
+					// On appelle la fonction "GetTargetPanneProbability" dynamiquement
+					// C'est nécessaire car je ne connais pas le nom de la classe de vos machines
+					if (machine.HasMethod("GetTargetPanneProbability"))
+					{
+						// On récupère la valeur et on la convertit en double
+						Variant resultat = machine.Call("GetTargetPanneProbability");
+						tableauPannes[i][j] = resultat.AsDouble();
+					}
+					else
+					{
+						// Sécurité si la fonction n'existe pas sur la machine
+						GD.PrintErr($"La machine dans col {i+1} slot {j+1} n'a pas la fonction GetTargetPanneProbability");
+						tableauPannes[i][j] = 0.0; 
+					}
+				}
+				else
+				{
+					// IL N'Y A PAS DE MACHINE (Slot vide)
+					// C'est ici qu'on met votre [NULL]
+					tableauPannes[i][j] = null;
+				}
+			}
+		}
+
+		return tableauPannes;
+	}
+	public void TestLectureProbabilites()
+	{
+		// On récupère le tableau des pannes
+		double?[][] resultat = GetTableauProbabilites();
+
+		GD.Print("--- TEST PANNES (Probabilités) ---");
+
+		// Parcourir les 3 colonnes
+		for (int i = 0; i < 3; i++)
+		{
+			string ligne = $"Col {i + 1} : ";
+			
+			// Parcourir les 3 machines
+			for (int j = 0; j < 3; j++)
+			{
+				// Vérifie si valeur existe ? Affiche la valeur : Sinon affiche NULL
+				string val = resultat[i][j].HasValue ? resultat[i][j].ToString() : "NULL";
+				
+				// On ajoute le résultat à la ligne de texte
+				ligne += $"[{val}] ";
+			}
+			
+			// On affiche la ligne complète dans la console
+			GD.Print(ligne);
+		}
+	}
+	// Fonction pour récupérer le tableau de probabilités d'ACCIDENTS [3 colonnes][3 machines max]
+	public double?[][] GetTableauAccidents()
+	{
+		// 1. Initialisation du tableau [3][3]
+		double?[][] tableauAccidents = new double?[3][];
+		
+		tableauAccidents[0] = new double?[3]; 
+		tableauAccidents[1] = new double?[3]; 
+		tableauAccidents[2] = new double?[3]; 
+
+		VBoxContainer[] lesColonnes = { colonne1, colonne2, colonne3 };
+
+		for (int i = 0; i < 3; i++)
+		{
+			var machines = lesColonnes[i].GetChildren();
+
+			for (int j = 0; j < 3; j++)
+			{
+				if (j < machines.Count)
+				{
+					// -- IL Y A UNE MACHINE --
+					Node machine = machines[j];
+
+					// CHANGEMENT ICI : On cherche "GetTargetAccidentProbability"
+					if (machine.HasMethod("GetTargetAccidentProbability"))
+					{
+						Variant resultat = machine.Call("GetTargetAccidentProbability");
+						tableauAccidents[i][j] = resultat.AsDouble();
+					}
+					else
+					{
+						GD.PrintErr($"La machine dans col {i+1} slot {j+1} n'a pas la fonction GetTargetAccidentProbability");
+						tableauAccidents[i][j] = 0.0; 
+					}
+				}
+				else
+				{
+					// -- SLOT VIDE --
+					tableauAccidents[i][j] = null;
+				}
+			}
+		}
+
+		return tableauAccidents;
+	}
+
+	// Fonction de test pour vérifier dans la console
+	public void TestLectureAccidents()
+	{
+		double?[][] resultat = GetTableauAccidents();
+
+		GD.Print("--- TEST ACCIDENTS ---");
+		// Exemple : Lire tout le tableau
+		for(int i = 0; i < 3; i++)
+		{
+			string ligne = $"Col {i+1} : ";
+			for(int j = 0; j < 3; j++)
+			{
+				// Operateur ternaire : Si valeur existe ? Affiche valeur : Sinon affiche NULL
+				string val = resultat[i][j].HasValue ? resultat[i][j].ToString() : "NULL";
+				ligne += $"[{val}] ";
+			}
+			GD.Print(ligne);
+		}
 	}
 
 }

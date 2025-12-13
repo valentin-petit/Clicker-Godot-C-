@@ -49,6 +49,7 @@ offset_left = -344.0
 offset_top = -166.0
 offset_right = 121.0
 offset_bottom = 90.0
+mouse_default_cursor_shape = 2
 
 [node name="Control" type="Control" parent="Sprite2DOrdinateur/ScrollContainer"]
 custom_minimum_size = Vector2(450, 420)
@@ -61,6 +62,7 @@ anchor_right = 1.0
 offset_right = 2.0
 offset_bottom = 100.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 2
 text = "Achat Publicité
 Vous obtenez plus de visibilité
  et les demandes augmentent
@@ -79,6 +81,7 @@ offset_top = 100.0
 offset_right = 2.0
 offset_bottom = 200.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 2
 text = "Ajout Machine 1
 Vous obtenez une nouvelle
  machine de prod dans votre usine
@@ -98,6 +101,7 @@ offset_top = 200.0
 offset_right = 2.0
 offset_bottom = 300.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 2
 text = "Ajout Machine 2
 Vous obtenez une nouvelle 
 machine de prod dans votre usine
@@ -115,6 +119,7 @@ anchor_right = 1.0
 offset_top = 300.0
 offset_bottom = 400.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 2
 text = "Ajout Machine 3
 Vous obtenez une nouvelle 
 machine de prod dans votre usine
@@ -125,29 +130,33 @@ icon_alignment = 2
 expand_icon = true
 script = ExtResource("8_njasf")
 
+[node name="lblArgent" type="Label" parent="Sprite2DOrdinateur"]
+offset_left = -344.0
+offset_top = -212.0
+offset_right = 124.0
+offset_bottom = -164.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+text = "ARGENT = "
+script = ExtResource("8_whdau")
+
 [node name="btnQuitter" type="Button" parent="Sprite2DOrdinateur"]
 offset_left = 18.7154
 offset_top = -205.948
 offset_right = 121.715
 offset_bottom = -175.948
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_ws0js")
 text = "Quitter X"
 icon = SubResource("CanvasTexture_6sogb")
 script = ExtResource("3_op2g6")
-
-[node name="lblArgent" type="Label" parent="Sprite2DOrdinateur"]
-offset_left = -450.061
-offset_top = -323.502
-offset_right = -369.061
-offset_bottom = -289.502
-text = "ARGENT = "
-script = ExtResource("8_whdau")
 
 [node name="btnAudit" type="Button" parent="Sprite2DOrdinateur"]
 offset_left = 266.0
 offset_top = 71.0
 offset_right = 397.0
 offset_bottom = 289.0
+mouse_default_cursor_shape = 2
 text = "Faire appel
  à un audit
  pour 500 $"

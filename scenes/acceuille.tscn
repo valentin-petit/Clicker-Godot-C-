@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://sokwkoe5tr4" path="res://Ligne de production automatisée rétro.png" id="1_t3bvy"]
 [ext_resource type="Texture2D" uid="uid://dk24mrexfhxbq" path="res://Bouton_Commencer_en_Pixel_Art-removebg-preview.png" id="2_asr5s"]
-[ext_resource type="Script" uid="uid://b4yhh0b506cxs" path="res://script/acceuille/TextureButtonAcceuille.cs" id="2_rp8bv"]
+[ext_resource type="Script" uid="uid://b4yhh0b506cxs" path="res://script/acceuil/TextureButtonAcceuil.cs" id="2_rp8bv"]
 [ext_resource type="Texture2D" uid="uid://cmmdx4shf12en" path="res://Design_sans_titre_1_-removebg-preview.png" id="3_asr5s"]
 
 [node name="Control" type="Control"]
@@ -32,12 +32,21 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -306.0
-offset_top = -801.0
+offset_top = -810.0
 offset_right = 306.0
-offset_bottom = -393.0
+offset_bottom = -469.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("2_asr5s")
 texture_pressed = ExtResource("3_asr5s")
 ignore_texture_size = true
 script = ExtResource("2_rp8bv")
+
+[node name="lblBoutonAcceuille" type="Label" parent="TextureRect/TextureButtonAcceuille"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 71.0
+offset_right = 549.0
+offset_bottom = 332.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
