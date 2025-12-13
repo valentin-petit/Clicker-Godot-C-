@@ -48,6 +48,22 @@ public partial class nodeRootPrincipal : Node2D
 	public Timer tmrMachine;
 	public Node2D _sceneAudit;
 	
+	//Partie Affichage Tutoriel
+	[Export] 
+	public TextureButton txtbtnTutoriel { get; set; }
+
+	[Export] 
+	public Control pnlTutoriel { get; set; }
+
+	[Export] 
+	public TextureButton txtbtnQuitter { get; set; }
+	
+	[Export]
+	private TextureButton txtbtnNext { get; set;}
+	
+	private Godot.Collections.Array<TextureRect> _tutorialImages; 
+	private int _currentImageIndex = 0;
+
 
 	public override void _Ready()
 	{
@@ -138,6 +154,20 @@ public partial class nodeRootPrincipal : Node2D
 		// --- CORRECTION FOCUS ---
 		// On désactive le focus sur tous les boutons déjà présents
 		DesactiverFocusBoutons(this);
+		
+		// Affichage Tuto		
+		_tutorialImages = new Godot.Collections.Array<TextureRect>
+		{
+			pnlTutoriel.GetNode<TextureRect>("ImageTuto1"),
+			pnlTutoriel.GetNode<TextureRect>("ImageTuto2"),
+			pnlTutoriel.GetNode<TextureRect>("ImageTuto3")
+		};       
+		pnlTutoriel.Hide();
+		
+		txtbtnTutoriel.Pressed += OnTxtbtnTutorielPressed;
+		txtbtnQuitter.Pressed += OnQuitterTextureButtonPressed;
+		txtbtnNext.Pressed += OnNextTextureButtonPressed;
+		
 	}
 
 	public override void _Process(double delta)
@@ -402,6 +432,56 @@ public partial class nodeRootPrincipal : Node2D
 	public int getStockChaussette()
 	{
 		return _stockChaussette;
+	}
+	
+	
+	// méthodes pour affichage du tuto dans le jeu
+	private void OnTxtbtnTutorielPressed()
+	{
+		pnlTutoriel.Show();
+		InitializeTutorialImages();
+	}
+
+	private void OnQuitterTextureButtonPressed()
+	{
+		pnlTutoriel.Hide();
+		InitializeTutorialImages();
+	}
+		
+	//méthode qui affiche la première image du tuto
+	private void InitializeTutorialImages()
+	{
+		foreach (var image in _tutorialImages)
+		{
+			image.Hide();
+		}
+	
+		_currentImageIndex = 0;
+		if (_tutorialImages.Count > 0)
+		{
+			_tutorialImages[_currentImageIndex].Show();
+		}
+	}
+	
+	private void OnNextTextureButtonPressed()
+	{
+		if (_tutorialImages.Count > _currentImageIndex && _tutorialImages[_currentImageIndex] != null)
+		{
+			_tutorialImages[_currentImageIndex].Hide();
+		}		
+		_currentImageIndex++;
+
+		if (_currentImageIndex >= _tutorialImages.Count)
+		{
+			OnQuitterTextureButtonPressed(); 
+		}
+		else
+		{
+			if (_tutorialImages[_currentImageIndex] != null)
+			{
+				_tutorialImages[_currentImageIndex].Show();
+			}
+		}
 	}
 
 }
