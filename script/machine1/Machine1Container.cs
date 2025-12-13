@@ -16,13 +16,13 @@ public partial class Machine1Container : Control
 	
 	private Timer _timer;
 	
-	public int _compteur; // Compteur pour les frames (0, 1, 2...)
+	public int _compteur; 
 	public Sprite2D _sprite;
 
-	// --- NOUVELLES VARIABLES ---
-	private int _compteurTics = 0;       // Compte combien de fois le timer a sonné
-	private int _ticsPourChangerFrame = 8; // Combien de tics il faut attendre pour bouger
-	// ---------------------------
+	// --- VARIABLES D'ANIMATION (Indépendance Vitesse) ---
+	private int _compteurTics = 0;        
+	private int _ticsPourChangerFrame = 8; 
+	// ----------------------------------------------------
 
 	private Random _rng = new Random(); 
 
@@ -47,11 +47,11 @@ public partial class Machine1Container : Control
 		_compteur = 0;
 		_sprite = GetNode<Sprite2D>("Area2DMachine/Sprite2DMachine");
 
-		// Récupération du Timer global
+		// Récupération du Timer global (0.34s)
 		_timer = _root.GetNode<Timer>("tmrMachine");
 		
 		// Initialisation
-		CalculerDelaiFrame(); // Définit le nombre de tics initiaux
+		CalculerDelaiFrame(); 
 		UpdateVitesseProduction();
 		UpdateStats();
 		
@@ -69,15 +69,15 @@ public partial class Machine1Container : Control
 		// 1. Si panne, on ne fait rien
 		if (_estEnPanne) return;
 
-		// 2. Si pas assez de stock, on force l'image 0 et on reset le rythme
+		// 2. Si pas assez de stock (Machine 1 a besoin de Laine)
 		if (_root.getStockLaine() < 2) 
 		{
 			_sprite.Texture = GD.Load<Texture2D>("res://image/machine1frame0.png");
 			return; 
 		}
 
-		// --- NOUVELLE LOGIQUE DE RYTHME ---
-		_compteurTics++; // On ajoute un tic
+		// --- LOGIQUE DE RYTHME (TICS) ---
+		_compteurTics++; 
 
 		// Si on n'a pas encore atteint le nombre de tics requis, on attend
 		if (_compteurTics < _ticsPourChangerFrame)
@@ -85,12 +85,12 @@ public partial class Machine1Container : Control
 			return; 
 		}
 
-		// Si on a atteint le seuil, on remet le compteur à 0 et on fait l'animation
+		// Si on a atteint le seuil, on reset le compteur et on avance l'animation
 		_compteurTics = 0;
 		// ----------------------------------
 
-		// Le reste de votre logique d'animation reste identique
 		_compteur++;
+		// Machine 1 a 6 frames (0 à 5), donc modulo 6
 		int index = _compteur % 6; 
 
 		if (index == 0) {
@@ -124,7 +124,7 @@ public partial class Machine1Container : Control
 			UpdateVitesseProduction();
 			UpdateStats();
 			
-			// On recalcule le délai (nombre de tics à attendre)
+			// On recalcule le délai d'animation
 			CalculerDelaiFrame();
 		}
 	}
@@ -138,38 +138,23 @@ public partial class Machine1Container : Control
 			UpdateVitesseProduction();
 			UpdateStats();
 
-			// On recalcule le délai
+			// On recalcule le délai d'animation
 			CalculerDelaiFrame();
 		}
 	}
 
-	// --- C'est ici qu'on définit votre règle de 8 à 1 ---
+	// --- FONCTION DE GESTION DU DELAI ---
 	private void CalculerDelaiFrame()
 	{
-		// On ne touche PAS au Timer.WaitTime.
-		// On change seulement combien de fois on ignore le Timer avant de bouger.
 		switch (_vitesse)
 		{
-			case 1:
-				_ticsPourChangerFrame = 8; // Très lent : attend 8 coups
-				break;
-			case 2:
-				_ticsPourChangerFrame = 6; // Un peu plus rapide
-				break;
-			case 3:
-				_ticsPourChangerFrame = 4; // Moyen
-				break;
-			case 4:
-				_ticsPourChangerFrame = 2; // Rapide
-				break;
-			case 5:
-				_ticsPourChangerFrame = 1; // Très rapide : bouge à chaque coup
-				break;
-			default:
-				_ticsPourChangerFrame = 8;
-				break;
+			case 1: _ticsPourChangerFrame = 8; break; // Lent
+			case 2: _ticsPourChangerFrame = 6; break;
+			case 3: _ticsPourChangerFrame = 4; break;
+			case 4: _ticsPourChangerFrame = 2; break;
+			case 5: _ticsPourChangerFrame = 1; break; // Rapide
+			default: _ticsPourChangerFrame = 8; break;
 		}
-		// Reset le compteur pour appliquer le changement immédiatement
 		_compteurTics = 0; 
 	}
 	
@@ -182,10 +167,12 @@ public partial class Machine1Container : Control
 	private void UpdateStats()
 	{
 		double pourcentageAccident = _vitesse * 2.5; 
-		double pourcentagePanne = Math.Min(100, _vitesse * 0.1); 
+		
+		// On récupère le vrai % défini pour la minute pour l'affichage
+		double pourcentagePanneMinute = GetTargetPanneProbability() * 100.0;
 
 		_lblAccident.Text = "Accident = " + pourcentageAccident.ToString("0.0") + "%";
-		_lblPanne.Text = "Panne = " + pourcentagePanne.ToString("0.0") + "% (Est)";
+		_lblPanne.Text = "Panne = " + pourcentagePanneMinute.ToString("0.0") + "% / min";
 	}
 
 	public void AjouterStock()
@@ -210,7 +197,7 @@ public partial class Machine1Container : Control
 
 		if (tirage < proba)
 		{
-			GD.Print("Accident");
+			GD.Print("Accident Machine 1");
 			int tirage2 = _rng.Next(100); 
 
 			if (tirage2 < 60)                
@@ -218,12 +205,12 @@ public partial class Machine1Container : Control
 				GD.Print("Coupure légère (-1000$)");
 				_root.subArgent(1000);
 			}
-			else if (tirage2 < 95)              
+			else if (tirage2 < 95)               
 			{
 				GD.Print("Bras cassé (-7000$)");
 				_root.subArgent(7000);
 			}
-			else                            
+			else                              
 			{
 				GD.Print("Accident mortel (-55000$)");
 				_root.subArgent(55000);
@@ -231,20 +218,43 @@ public partial class Machine1Container : Control
 		}
 	}
 
+	// --- NOUVELLE LOGIQUE DE PANNE PROBABILISTE (Standardisée) ---
 	public void CheckEnPanne()
 	{
-		// La vérification de panne se fait à chaque tick du timer (indépendamment de l'animation)
-		// C'est mieux ainsi, sinon à vitesse 1 on aurait 8x moins de risques de panne par seconde.
 		if (_estEnPanne) return;
 
-		double proba = Math.Sqrt(_vitesse) / 5000.0; 
+		// 1. Récupérer le % de chance de tomber en panne sur 1 minute
+		double targetProbOneMinute = GetTargetPanneProbability();
+
+		// 2. Calculer combien de fois le timer (0.34s) s'exécute en 1 minute (60s)
+		double ticksPerMinute = 60.0 / 0.34;
+
+		// 3. Convertir la probabilité "par minute" en probabilité "par tic"
+		// Formule : P_tick = 1 - (1 - P_minute)^(1 / N_ticks)
+		double probaParTick = 1.0 - Math.Pow(1.0 - targetProbOneMinute, 1.0 / ticksPerMinute);
+
+		// 4. Tirage au sort
 		double tirage = _rng.NextDouble();
 
-		if (tirage < proba)
+		if (tirage < probaParTick)
 		{
 			_estEnPanne = true;
 			_sprite.Texture = GD.Load<Texture2D>("res://image/Machine1EnPanne.png");
-			GD.Print("La machine est tombée en panne !");
+			GD.Print("La machine 1 est tombée en panne !");
+		}
+	}
+
+	// Helper pour définir les % par minute selon la vitesse
+	private double GetTargetPanneProbability()
+	{
+		switch ((int)_vitesse)
+		{
+			case 1: return 0.10; // 10%
+			case 2: return 0.14; // 14%
+			case 3: return 0.17; // 17%
+			case 4: return 0.22; // 22%
+			case 5: return 0.35; // 35%
+			default: return 0.10;
 		}
 	}
 }
